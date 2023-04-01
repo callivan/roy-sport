@@ -1,0 +1,272 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "plugins": [
+    "react",
+    "@typescript-eslint",
+    "simple-import-sort",
+    "import",
+    "boundaries",
+    "prettier",
+    "jsx-a11y",
+    "sonarjs"
+  ],
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:sonarjs/recommended",
+    "plugin:jsx-a11y/strict",
+    "plugin:import/recommended",
+    "plugin:boundaries/recommended"
+  ],
+  "settings": {
+    "react": {
+      "version": "detect"
+    },
+    "import/resolver": {
+      "typescript": {
+        "projects": [
+          "tsconfig.json"
+        ],
+        "alwaysTryTypes": true
+      }
+    },
+    // Настройка структуры папок под архитектуру Feature Slice Design для дальнейшего контроля ESLint
+    "boundaries/elements": [
+      {
+        "type": "app",
+        "pattern": "./src/app"
+      },
+      {
+        "type": "processes",
+        "pattern": "./src/processes"
+      },
+      {
+        "type": "pages",
+        "pattern": "./src/pages"
+      },
+      {
+        "type": "widgets",
+        "pattern": "./src/widgets"
+      },
+      {
+        "type": "features",
+        "pattern": "./src/features"
+      },
+      {
+        "type": "entities",
+        "pattern": "./src/entities"
+      },
+      {
+        "type": "shared",
+        "pattern": "./src/shared"
+      }
+    ]
+  },
+  "rules": {
+    "simple-import-sort/sort": "error",
+    "@typescript-eslint/no-unused-vars": "warn",
+    "no-unused-vars": "warn",
+    "no-console": "warn",
+    "prettier/prettier": [
+      "error"
+    ],
+    // ----------
+    // Настройка доступности
+    "jsx-a11y/anchor-ambiguous-text": [
+      2
+    ],
+    // "jsx-a11y/anchor-has-content": [
+    //   2,
+    //   {
+    //     "components": [
+    //       "Anchor"
+    //     ]
+    //   }
+    // ],
+    // ----------
+    // Настройка ограничений на импорт файлов под архитектуру Feature Slice Design
+    "no-restricted-imports": [
+      "error",
+      {
+        "patterns": [
+          {
+            "group": [
+              "src/processes/*/*",
+              "src/pages/*/*",
+              "src/widgets/*/*",
+              "src/features/*/*",
+              "src/entities/*/*",
+              "src/shared/*/*"
+            ],
+            "message": "Архитектура Feature slice design накладывает ограничение на импорт внутренних файлов слайса!"
+          }
+        ]
+      }
+    ],
+    "import/no-restricted-paths": [
+      "error",
+      {
+        "basePath": "./src",
+        "zones": [
+          {
+            "target": [
+              "./processes"
+            ],
+            "from": [
+              "./app"
+            ],
+            "message": "Архитектура Feature slice design накладывает ограничение на импорт из вышестоящего слоя app в ниже стоящий слой processes!"
+          },
+          {
+            "target": [
+              "./pages"
+            ],
+            "from": [
+              "./app",
+              "./processes"
+            ],
+            "message": "Архитектура Feature slice design накладывает ограничение на импорт из вышестоящих слоёв [app, processes] в ниже стоящий слой pages!"
+          },
+          {
+            "target": [
+              "./widgets"
+            ],
+            "from": [
+              "./app",
+              "./processes",
+              "./pages"
+            ],
+            "message": "Архитектура Feature slice design накладывает ограничение на импорт из вышестоящих слоёв [app, processes, pages] в ниже стоящий слой widgets!"
+          },
+          {
+            "target": [
+              "./features"
+            ],
+            "from": [
+              "./app",
+              "./processes",
+              "./pages",
+              "./widgets"
+            ],
+            "message": "Архитектура Feature slice design накладывает ограничение на импорт из вышестоящих слоёв [app, processes, pages, widgets] в ниже стоящий слой features!"
+          },
+          {
+            "target": [
+              "./entities"
+            ],
+            "from": [
+              "./app",
+              "./processes",
+              "./pages",
+              "./widgets",
+              "./features"
+            ],
+            "message": "Архитектура Feature slice design накладывает ограничение на импорт из вышестоящих слоёв [app, processes, pages, widgets, features] в ниже стоящий слой entities!"
+          },
+          {
+            "target": [
+              "./shared"
+            ],
+            "from": [
+              "./app",
+              "./processes",
+              "./pages",
+              "./widgets",
+              "./features",
+              "./entities"
+            ],
+            "message": "Архитектура Feature slice design накладывает ограничение на импорт из вышестоящих слоёв [app, processes, pages, widgets, features, entities] в ниже стоящий слой shared!"
+          }
+        ]
+      }
+    ],
+    "boundaries/element-types": [
+      2,
+      {
+        "default": "disallow",
+        "rules": [
+          {
+            "from": [
+              "app"
+            ],
+            "allow": [
+              "processes",
+              "pages",
+              "widgets",
+              "features",
+              "entities",
+              "shared"
+            ]
+          },
+          {
+            "from": [
+              "processes"
+            ],
+            "allow": [
+              "pages",
+              "widgets",
+              "features",
+              "entities",
+              "shared"
+            ]
+          },
+          {
+            "from": [
+              "pages"
+            ],
+            "allow": [
+              "widgets",
+              "features",
+              "entities",
+              "shared"
+            ]
+          },
+          {
+            "from": [
+              "widgets"
+            ],
+            "allow": [
+              "features",
+              "entities",
+              "shared"
+            ]
+          },
+          {
+            "from": [
+              "features"
+            ],
+            "allow": [
+              "entities",
+              "shared"
+            ]
+          },
+          {
+            "from": [
+              "entities"
+            ],
+            "allow": [
+              "shared"
+            ]
+          },
+          {
+            "from": [
+              "shared"
+            ],
+            "allow": [
+              "shared"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
