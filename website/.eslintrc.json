@@ -1,0 +1,27 @@
+{
+  "env": {
+    "browser": true,
+    "es2020": true
+  },
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "plugins": [
+    "prettier",
+    "sonarjs",
+    "simple-import-sort"
+  ],
+  "extends": [
+    "next/core-web-vitals",
+    "plugin:sonarjs/recommended"
+  ],
+  "rules": {
+    "prettier/prettier": "error",
+    "no-unused-vars": "warn",
+    "no-console": "warn",
+    "simple-import-sort/imports": "error",
+    "sort-imports": "off",
+    "import/order": "off"
+  }
+}

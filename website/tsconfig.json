@@ -1,0 +1,62 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "paths": {
+      "@widgets": [
+        "./app/widgets/index.ts"
+      ],
+      "@features": [
+        "./app/features/index.ts"
+      ],
+      "@entities": [
+        "./app/entities/index.ts"
+      ],
+      "@shared/icons": [
+        "./app/shared/icons/index.ts"
+      ],
+      "@shared/ui": [
+        "./app/shared/ui/index.ts"
+      ],
+      "@shared/utils": [
+        "./app/shared/utils/index.ts"
+      ],
+      "@types": [
+        "./types/index.ts"
+      ],
+      "@api": [
+        "./api/index.ts"
+      ],
+    }
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_components_categories",
+  "info": {
+    "displayName": "Category"
+  },
+  "options": {},
+  "attributes": {
+    "category": {
+      "type": "enumeration",
+      "enum": [
+        "run",
+        "volleyball",
+        "basketball"
+      ],
+      "required": true
+    }
+  }
+}

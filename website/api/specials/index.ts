@@ -1,0 +1,1 @@
+export { fetchSpecials } from './fetch';

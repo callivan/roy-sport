@@ -1,0 +1,41 @@
+{
+  "kind": "collectionType",
+  "collectionName": "sneakers",
+  "info": {
+    "singularName": "sneaker",
+    "pluralName": "sneakers",
+    "displayName": "Sneaker"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "text",
+      "required": true
+    },
+    "sizes": {
+      "type": "text",
+      "required": true
+    },
+    "price": {
+      "required": true,
+      "type": "float"
+    },
+    "categories": {
+      "type": "component",
+      "repeatable": true,
+      "component": "components.category",
+      "required": true
+    },
+    "img": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
+    }
+  }
+}

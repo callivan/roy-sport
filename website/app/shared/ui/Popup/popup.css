@@ -1,0 +1,122 @@
+@keyframes jump1 {
+  0% {
+    transform: translate(-7px, 0%);
+  }
+
+  33% {
+    transform: translate(-7px, -15%);
+  }
+
+  66% {
+    transform: translate(-7px, 30%);
+  }
+
+  100% {
+    transform: translate(-7px, 0%);
+  }
+}
+
+@keyframes jump2 {
+  0% {
+    transform: translate(0px, 0%);
+  }
+
+  33% {
+    transform: translate(0px, -15%);
+  }
+
+  66% {
+    transform: translate(0px, 30%);
+  }
+
+  100% {
+    transform: translate(0px, 0%);
+  }
+}
+
+@keyframes jump3 {
+  0% {
+    transform: translate(7px, 0%);
+  }
+
+  33% {
+    transform: translate(7px, -15%);
+  }
+
+  66% {
+    transform: translate(7px, 30%);
+  }
+
+  100% {
+    transform: translate(7px, 0%);
+  }
+}
+
+@keyframes cross1 {
+  0% {
+    transform: translate(-7px, 0%) rotate(0deg);
+    height: 14px;
+  }
+
+  40% {
+    transform: translate(0px, 0%) rotate(0deg);
+    height: 20px;
+  }
+
+  80% {
+    transform: translate(0px, 0%) rotate(-50deg);
+    height: 20px;
+  }
+
+  100% {
+    transform: translate(0px, 0%) rotate(-45deg);
+    height: 20px;
+  }
+}
+
+@keyframes cross2 {
+  0% {
+    transform: translate(7px, 0%) rotate(0deg);
+    height: 12px;
+  }
+
+  40% {
+    transform: translate(0px, 0%) rotate(0deg);
+    height: 20px;
+  }
+
+  80% {
+    transform: translate(0px, 0%) rotate(50deg);
+    height: 20px;
+  }
+
+  100% {
+    transform: translate(0px, 0%) rotate(45deg);
+    height: 20px;
+  }
+}
+
+.popup-button:hover:not(.active) > .line:first-of-type {
+  animation: jump1 0.5s ease-in-out forwards;
+}
+
+.popup-button:hover:not(.active) > .line {
+  animation: jump2 0.5s ease-in-out forwards 0.05s;
+}
+
+.popup-button:hover:not(.active) > .line:last-of-type {
+  animation: jump3 0.5s ease-in-out forwards 0.1s;
+}
+
+.popup-button.active > .line:first-of-type {
+  animation: cross1 0.5s ease-in-out forwards;
+}
+
+.popup-button.active > .line:nth-of-type(2) {
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.popup-button.active > .line:last-of-type {
+  animation: cross2 0.5s ease-in-out forwards;
+}

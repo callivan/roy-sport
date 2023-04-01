@@ -1,0 +1,1 @@
+export { fetchClothes } from './fetch';
