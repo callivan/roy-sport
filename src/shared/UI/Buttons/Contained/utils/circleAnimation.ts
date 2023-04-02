@@ -20,16 +20,16 @@ export function circleAnimation({ button, circleElement, clickPosition }: Circle
       {
         opacity: 1,
         clipPath: `circle(0% at ${circleStartPosition.x}px ${circleStartPosition.y}px)`,
-        backgroundColor: theme.colors.black,
+        backgroundColor: theme.colors.gray_clear,
       },
       {
         opacity: 0,
         clipPath: `circle(150% at ${circleStartPosition.x}px ${circleStartPosition.y}px )`,
-        backgroundColor: theme.colors.black,
+        backgroundColor: theme.colors.gray_clear,
       },
     ],
     {
-      duration: 3000,
+      duration: 4000,
       easing: 'cubic-bezier(0.075, 0.820, 0.165, 1.000)',
       iterations: 1,
     },
