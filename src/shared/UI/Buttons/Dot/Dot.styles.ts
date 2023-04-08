@@ -20,8 +20,10 @@ export const Blur = styled('span')((props) => ({
 export const Button = styled('button')((props) => ({
   width: '10px',
   height: '10px',
+
   borderRadius: '50%',
   backgroundColor: props.theme.colors.gray_dark,
+
   transformOrigin: 'center',
   transform: 'translate(-4px, -4px)',
 
@@ -33,6 +35,7 @@ export const Button = styled('button')((props) => ({
 
   '&:active, &.is-active': {
     transform: 'translate(0px, 0px)',
+
     backgroundColor: props.theme.colors.black_dark,
   },
 }));

@@ -7,7 +7,7 @@ import { TagName, TTextProps } from './types/component';
 export function Text<E extends TagName>({
   as,
   variant = 'roboto_body1',
-  color = 'black',
+  color = 'black_dark',
   children,
   ...props
 }: TTextProps<E>) {

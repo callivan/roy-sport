@@ -5,11 +5,14 @@ export const Container = styled('div')((props) => ({
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
+
   backgroundColor: props.theme.colors.purple_light,
   borderRadius: '1000px',
   boxShadow: `4px 4px 4px 0px ${transparentize(0.75, props.theme.colors.black_dark)}`,
+
   minWidth: '18px',
   minHeight: '18px',
+
   paddingBlock: '2px',
   paddingInline: '4px',
 

@@ -10,6 +10,7 @@ export const Wrapper = styled('div')({
 export const Blur = styled('span')((props) => ({
   position: 'absolute',
   inset: '0px',
+
   backgroundColor: transparentize(0.75, props.theme.colors.black_dark),
   filter: 'blur(1px)',
 }));
@@ -19,10 +20,13 @@ export const Button = styled('button')<IButtonStylesProps>(({ isIcon, ...props }
   alignItems: 'center',
   gap: '8px',
   justifyContent: 'center',
+
   backgroundColor: props.theme.colors.black_dark,
   color: props.theme.colors.white,
+
   transformOrigin: 'center',
   transform: 'translate(-4px, -4px)',
+
   paddingBlock: '8px',
   paddingInline: isIcon ? '8px 16px' : '16px',
 
@@ -38,7 +42,9 @@ export const Button = styled('button')<IButtonStylesProps>(({ isIcon, ...props }
 
   '&:disabled': {
     pointerEvents: 'none',
+
     backgroundColor: props.theme.colors.gray_dark,
+
     transform: 'translate(0px, 0px)',
 
     '& > .button-text, & > .button-icon': {
@@ -60,8 +66,11 @@ export const IconContainer = styled('div')({
 
 export const Text = styled('span')((props) => ({
   position: 'relative',
+
   pointerEvents: 'none',
+
   color: 'inherit',
+
   zIndex: 1,
 
   ...props.theme.fonts.roboto_body1,
@@ -72,10 +81,13 @@ export const Text = styled('span')((props) => ({
 export const CircleContainer = styled('div')({
   position: 'absolute',
   inset: '0px',
+
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
+
   borderRadius: '5px',
+
   overflow: 'hidden',
 });
 
