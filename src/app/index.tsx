@@ -10,7 +10,6 @@ export function App() {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          gap: '20px',
           width: '100%',
           height: '100vh',
         }}
