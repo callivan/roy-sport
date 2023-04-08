@@ -2,16 +2,20 @@ import styled from 'styled-components';
 
 export const Button = styled('button')((props) => ({
   position: 'relative',
+
   display: 'flex',
   alignItems: 'center',
   gap: '8px',
   justifyContent: 'center',
+
   color: props.theme.colors.gray_dark,
+
   padding: '0px',
 
   '&:hover': {
     '& .button-line': {
       transform: 'scaleX(1)',
+
       backgroundColor: props.theme.colors.gray_dark,
     },
   },
@@ -23,6 +27,7 @@ export const Button = styled('button')((props) => ({
 
     '& .button-line': {
       transform: 'scaleX(1)',
+
       backgroundColor: props.theme.colors.black_dark,
     },
   },
@@ -40,9 +45,12 @@ export const Line = styled('span')({
   position: 'absolute',
   bottom: '0px',
   left: '0px',
+
   width: '100%',
   height: '1px',
+
   backgroundColor: 'transparent',
+
   transform: 'scaleX(0)',
   transformOrigin: 'left center',
 
@@ -62,8 +70,11 @@ export const IconContainer = styled('div')({
 
 export const Text = styled('span')((props) => ({
   position: 'relative',
+
   pointerEvents: 'none',
+
   color: 'inherit',
+
   textTransform: 'uppercase',
 
   ...props.theme.fonts.roboto_body1,

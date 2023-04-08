@@ -10,9 +10,11 @@ export const theme = {
     gray_clear: transparentize(0.7, '#EFEFEF'),
 
     black_dark: '#383838',
-    black_clear: transparentize(0.7, '#383838'),
+    black_clear_70: transparentize(0.3, '#383838'),
+    black_clear_80: transparentize(0.2, '#383838'),
 
     white: '#FFFFFF',
+    white_clear: transparentize(0.3, '#FFFFFF'),
   },
   fonts: {
     roboto_h1: {
