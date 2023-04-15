@@ -29,6 +29,9 @@ export const GlobalStyle = createGlobalStyle<{ theme: typeof theme }>((props) =>
     border: 'none',
     backgroundColor: 'transparent',
   },
+  ul: {
+    listStyle: 'none',
+  },
   body: {
     position: 'relative',
 
