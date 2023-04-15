@@ -12,6 +12,14 @@ export const Button = styled('button')((props) => ({
 
   padding: '0px 0px 2px 0px',
 
+  '& > svg': {
+    transition: 'color .2s ease-in-out',
+  },
+
+  '&.is-active': {
+    color: props.theme.colors.black_dark,
+  },
+
   '&:hover': {
     '& .button-line': {
       transform: 'scaleX(1)',
@@ -21,10 +29,6 @@ export const Button = styled('button')((props) => ({
   },
 
   '&:active, &.is-active': {
-    '& > .button-text, & > .button-icon': {
-      color: props.theme.colors.black_dark,
-    },
-
     '& .button-line': {
       transform: 'scaleX(1)',
 
@@ -34,10 +38,6 @@ export const Button = styled('button')((props) => ({
 
   '&:disabled': {
     pointerEvents: 'none',
-
-    '& > .button-text, & > .button-icon': {
-      color: props.theme.colors.gray_medium,
-    },
   },
 }));
 
@@ -56,28 +56,3 @@ export const Line = styled('span')({
 
   transition: 'transform .2s ease-in-out, background-color .2s ease-in-out',
 });
-
-export const IconContainer = styled('div')({
-  width: 'max-content',
-  height: 'max-content',
-
-  fontSize: '0px',
-  lineHeight: '0px',
-  color: 'inherit',
-
-  transition: 'color .2s ease-in-out',
-});
-
-export const Text = styled('span')((props) => ({
-  position: 'relative',
-
-  pointerEvents: 'none',
-
-  color: 'inherit',
-
-  textTransform: 'uppercase',
-
-  ...props.theme.fonts.roboto_body1,
-
-  transition: 'color .2s ease-in-out',
-}));

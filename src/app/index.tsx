@@ -1,8 +1,15 @@
 import React from 'react';
 
+import { Popup, TPopupItem } from '@entities';
 import { ThemeProvider } from '@shared';
 
 export function App() {
+  const popupItems: TPopupItem[] = [
+    { name: 'БЕГ', isActive: true },
+    { name: 'ВОЛЕЙБОЛ', isActive: false },
+    { name: 'БАСКЕТБОЛ', isActive: false },
+  ];
+
   return (
     <ThemeProvider>
       <div
@@ -12,8 +19,11 @@ export function App() {
           justifyContent: 'center',
           width: '100%',
           height: '100vh',
+          backgroundColor: 'red',
         }}
-      ></div>
+      >
+        <Popup items={popupItems} />
+      </div>
     </ThemeProvider>
   );
 }
