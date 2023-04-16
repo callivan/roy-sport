@@ -1,0 +1,29 @@
+import React from 'react';
+
+import * as S from './Card.styles';
+import { ICardProps } from './types/component';
+
+export function Card({ name, price, img }: ICardProps) {
+  const formatter = new Intl.NumberFormat('ru', {
+    style: 'currency',
+    currency: 'RUB',
+    maximumFractionDigits: 0,
+    minimumFractionDigits: 0,
+  });
+
+  return (
+    <S.Wrapper>
+      <S.Blur />
+
+      <S.Container className="card-container">
+        <S.Img src={img} />
+
+        <S.Footer className="card-footer">
+          <S.Text>{name}</S.Text>
+
+          <S.Text>{formatter.format(price)}</S.Text>
+        </S.Footer>
+      </S.Container>
+    </S.Wrapper>
+  );
+}

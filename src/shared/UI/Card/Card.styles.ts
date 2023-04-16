@@ -6,6 +6,9 @@ export const Wrapper = styled('div')({
 
   position: 'relative',
 
+  width: '100%',
+  height: 'max-content',
+
   '&:hover': {
     '& > .card-container': {
       transform: 'translate(-3px, -3px)',
@@ -33,7 +36,7 @@ export const Container = styled('div')({
   display: 'flex',
   flexDirection: 'column',
 
-  width: '250px',
+  width: '100%',
   height: 'max-content',
 
   transform: 'translate(-6px, -6px)',
@@ -53,7 +56,7 @@ export const Img = styled('img')({
 export const Footer = styled('div')((props) => ({
   display: 'flex',
   justifyContent: 'space-between',
-  alignItems: 'center',
+  alignItems: 'flex-start',
   gap: '8px',
 
   backgroundColor: props.theme.colors.white,
@@ -67,6 +70,7 @@ export const Footer = styled('div')((props) => ({
 
 export const Text = styled('span')((props) => ({
   color: props.theme.colors.black_dark,
+  wordBreak: 'break-word',
 
   ...props.theme.fonts.roboto_body2,
 
