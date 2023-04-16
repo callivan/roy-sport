@@ -1,15 +1,11 @@
 import React from 'react';
 
-import { Popup, TPopupItem } from '@entities';
-import { ThemeProvider } from '@shared';
+import { theme, ThemeProvider } from '@shared';
+
+import { MediaContextProvider } from './contexts';
+import { Wrapper } from './Wrapper';
 
 export function App() {
-  const popupItems: TPopupItem[] = [
-    { name: 'БЕГ', isActive: true },
-    { name: 'ВОЛЕЙБОЛ', isActive: false },
-    { name: 'БАСКЕТБОЛ', isActive: false },
-  ];
-
   return (
     <ThemeProvider>
       <div
@@ -19,10 +15,12 @@ export function App() {
           justifyContent: 'center',
           width: '100%',
           height: '100vh',
-          backgroundColor: 'red',
+          backgroundColor: theme.colors.black_dark,
         }}
       >
-        <Popup items={popupItems} />
+        <MediaContextProvider>
+          <Wrapper />
+        </MediaContextProvider>
       </div>
     </ThemeProvider>
   );

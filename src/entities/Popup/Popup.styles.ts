@@ -113,19 +113,18 @@ export const Wrapper = styled('div')<IWrapperStylseProps>(
 export const Container = styled('div')<IContainerStylesProps>(({ isActive }) => ({
   position: 'relative',
 
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-
-  width: '400px',
-  height: '600px',
-
-  overflow: 'hidden',
+  width: '100%',
+  height: '100%',
 
   pointerEvents: isActive ? 'visible' : 'none',
   opacity: isActive ? 1 : 0,
 
   transition: 'opacity .15s ease-in-out',
+
+  overflow: 'auto',
+
+  paddingBlock: '24px',
+  paddingInline: '24px',
 
   '& > .circle-effect': {
     clipPath: isActive ? 'circle(130% at 50% 0%)' : 'circle(0% at 50% 0%)',
@@ -134,7 +133,11 @@ export const Container = styled('div')<IContainerStylesProps>(({ isActive }) => 
 
 export const CircleEffect = styled('span')({
   position: 'absolute',
-  inset: '0px',
+  top: '0px',
+  left: '0px',
+
+  width: '100%',
+  height: '100%',
 
   backgroundColor: 'white',
 
@@ -142,9 +145,17 @@ export const CircleEffect = styled('span')({
 });
 
 export const List = styled('ul')({
+  position: 'relative',
+  top: '0px',
+  left: '50%',
+
   display: 'flex',
   flexDirection: 'column',
   gap: '32px',
+
+  width: 'max-content',
+
+  transform: 'translateX(-50%)',
 });
 
 export const Item = styled('ul')({});
