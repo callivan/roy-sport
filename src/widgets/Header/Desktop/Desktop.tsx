@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { memo } from 'react';
 
 import { Navigation, TNavigationItem } from '@entities';
 
 import * as S from './Desktop.styles';
 import { IHeaderDesktopProps } from './types/component';
 
-export function Desktop({ logo }: IHeaderDesktopProps) {
+export const Desktop = memo(function Desktop({ logo }: IHeaderDesktopProps) {
   const navigationItemsCenter: TNavigationItem[] = [
     { name: 'БЕГ', isActive: true },
     { name: 'ВОЛЕЙБОЛ', isActive: false },
@@ -25,4 +25,4 @@ export function Desktop({ logo }: IHeaderDesktopProps) {
       <Navigation items={navigationItemsRight} />
     </S.Container>
   );
-}
+});

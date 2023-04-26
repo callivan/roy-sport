@@ -1,13 +1,12 @@
-import React from 'react';
+import React, { memo } from 'react';
 
-import { Card } from '@shared';
+import { Card, ICardProps } from '@shared';
 
 import shoes from './assets/imgs/shoes.png';
 import * as S from './ProductsList.styles';
-import { TProductItemProps } from './types/component';
 
-export function ProductsList() {
-  const items: TProductItemProps[] = [
+export const ProductsList = memo(function ProductsList() {
+  const items: ICardProps[] = [
     {
       name: 'Nike Air',
       price: 3500,
@@ -39,4 +38,4 @@ export function ProductsList() {
       ))}
     </S.List>
   );
-}
+});

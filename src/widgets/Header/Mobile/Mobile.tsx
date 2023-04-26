@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { memo } from 'react';
 
 import { Popup, TPopupItem } from '@entities';
 
 import * as S from './Mobile.styles';
 import { IHeaderMobileProps } from './types/component';
 
-export function Mobile({ logo }: IHeaderMobileProps) {
+export const Mobile = memo(function Mobile({ logo }: IHeaderMobileProps) {
   const popupItems: TPopupItem[] = [
     { name: 'БЕГ', isActive: true },
     { name: 'ВОЛЕЙБОЛ', isActive: false },
@@ -20,4 +20,4 @@ export function Mobile({ logo }: IHeaderMobileProps) {
       <Popup items={popupItems} />
     </S.Container>
   );
-}
+});

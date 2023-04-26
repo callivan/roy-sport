@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { memo, useState } from 'react';
 
 import { Box, ButtonIcon, ButtonText } from '@shared';
 
@@ -6,8 +6,9 @@ import { Portal } from './components/Portal';
 import { handlePopupClick, handlePopupItemClick } from './handlers';
 import * as S from './Popup.styles';
 import { TPopupItem, TPopupProps } from './types/component';
+import { arePropsEqual } from './utils/arePropsEqual';
 
-export function Popup({ items }: TPopupProps) {
+export const Popup = memo(function Popup({ items }: TPopupProps) {
   const [isOpen, setOpen] = useState<boolean>(false);
   const [list, setList] = useState<TPopupItem[]>(items);
 
@@ -44,4 +45,4 @@ export function Popup({ items }: TPopupProps) {
       </Portal>
     </>
   );
-}
+}, arePropsEqual);

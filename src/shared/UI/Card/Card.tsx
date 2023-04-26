@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { memo } from 'react';
 
 import * as S from './Card.styles';
 import { ICardProps } from './types/component';
+import { arePropsEqual } from './utils/arePropsEqual';
 
-export function Card({ name, price, img }: ICardProps) {
+export const Card = memo(function Card({ name, price, img }: ICardProps) {
   const formatter = new Intl.NumberFormat('ru', {
     style: 'currency',
     currency: 'RUB',
@@ -26,4 +27,4 @@ export function Card({ name, price, img }: ICardProps) {
       </S.Container>
     </S.Wrapper>
   );
-}
+}, arePropsEqual);

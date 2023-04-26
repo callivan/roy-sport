@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 
 import { ProductsList } from '@entities';
 import { Header, Layout, Sidebar } from '@widgets';
@@ -6,7 +6,7 @@ import { Header, Layout, Sidebar } from '@widgets';
 import * as S from './Products.styles';
 import { IProductsProps } from './types/component';
 
-export function Products({ isTabletSmall, isMobile }: IProductsProps) {
+export const Products = memo(function Products({ isTabletSmall, isMobile }: IProductsProps) {
   return (
     <Layout header={<Header isMobile={isMobile} />}>
       <S.Container isHorizontal={isMobile}>
@@ -20,4 +20,4 @@ export function Products({ isTabletSmall, isMobile }: IProductsProps) {
       </S.Container>
     </Layout>
   );
-}
+});
