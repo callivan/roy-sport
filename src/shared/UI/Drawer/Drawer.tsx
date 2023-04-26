@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useRef, useState } from 'react';
+import React, { memo, useLayoutEffect, useRef, useState } from 'react';
 
 import { IconChevron } from './assets/icons/Chevron';
 import { Portal } from './components/Portal';
@@ -7,7 +7,7 @@ import { handleClick, handleClickOutside } from './handlers';
 import { TDrawerProps } from './types/component';
 import { setContainerWidth } from './utils';
 
-export function Drawer({ children, isTop }: TDrawerProps) {
+export const Drawer = memo(function Drawer({ children, isTop }: TDrawerProps) {
   const [isOpen, setOpen] = useState<boolean>(false);
 
   const wrapperRef = useRef<HTMLDivElement | null>(null);
@@ -48,4 +48,4 @@ export function Drawer({ children, isTop }: TDrawerProps) {
       </S.Wrapper>
     </Portal>
   );
-}
+});

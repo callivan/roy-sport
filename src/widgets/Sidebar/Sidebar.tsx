@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 
 import { Navigation, TNavigationItem } from '@entities';
 import { IconBarbell, IconHoodie, IconSneaker } from '@shared';
@@ -6,7 +6,10 @@ import { IconBarbell, IconHoodie, IconSneaker } from '@shared';
 import * as S from './Sidebar.styles';
 import { TSidebarProps } from './types/component';
 
-export function Sidebar({ isOnlyIcon = false, isVertical = true }: TSidebarProps) {
+export const Sidebar = memo(function Sidebar({
+  isOnlyIcon = false,
+  isVertical = true,
+}: TSidebarProps) {
   const navigationItems: TNavigationItem[] = [
     { name: 'КРОССОВКИ', isActive: true, icon: <IconSneaker />, count: 10 },
     { name: 'ОДЕЖДА', isActive: false, icon: <IconHoodie />, count: 24 },
@@ -18,4 +21,4 @@ export function Sidebar({ isOnlyIcon = false, isVertical = true }: TSidebarProps
       <Navigation items={navigationItems} isVertical={isVertical} isOnlyIcon={isOnlyIcon} isBage />
     </S.Container>
   );
-}
+});
