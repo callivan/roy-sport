@@ -16,10 +16,8 @@ export const Content = styled('div')({
 
   height: '100%',
 
-  overflow: 'auto',
-
   paddingBlock: '48px',
-  paddingInline: '24px',
+  paddingInline: '24px 16px',
 });
 
 export const SidebarWrapper = styled('div')<ISidebarWrapperStylesProps>(

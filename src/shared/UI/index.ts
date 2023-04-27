@@ -4,3 +4,4 @@ export * from './Bage/index';
 export * from './Card/index';
 export * from './Drawer/index';
 export * from './Box/index';
+export * from './Scroll/index';
