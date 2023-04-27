@@ -5,3 +5,7 @@ export interface IContainerStylesProps {
 export interface ISidebarWrapperStylesProps {
   isHorizontal: boolean;
 }
+
+export interface IFiltersContainerStylesProps {
+  isHorizontal: boolean;
+}

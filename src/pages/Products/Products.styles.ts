@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 
-import { IContainerStylesProps, ISidebarWrapperStylesProps } from './types/styles';
+import {
+  IContainerStylesProps,
+  IFiltersContainerStylesProps,
+  ISidebarWrapperStylesProps,
+} from './types/styles';
 
 export const Container = styled('div')<IContainerStylesProps>(({ isHorizontal }) => ({
   display: 'flex',
@@ -14,11 +18,24 @@ export const Container = styled('div')<IContainerStylesProps>(({ isHorizontal })
 export const Content = styled('div')({
   flexGrow: 1,
 
+  display: 'flex',
+  flexDirection: 'column',
+  gap: '24px',
+
   height: '100%',
 
-  paddingBlock: '48px',
-  paddingInline: '24px 8px',
+  paddingRight: '8px',
 });
+
+export const FiltersContainer = styled('div')<IFiltersContainerStylesProps>(({ isHorizontal }) => ({
+  display: 'flex',
+
+  ...(isHorizontal
+    ? { flexDirection: 'row', alignItems: 'center', gap: '24px' }
+    : { flexDirection: 'column', gap: '16px' }),
+
+  padding: '24px 24px 0px 24px',
+}));
 
 export const SidebarWrapper = styled('div')<ISidebarWrapperStylesProps>(
   ({ isHorizontal, ...props }) => ({

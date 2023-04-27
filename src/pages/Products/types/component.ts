@@ -4,3 +4,8 @@ export interface IProductsProps {
   isSidebarOnlyIcon: boolean;
   isSidebarVertical: boolean;
 }
+
+export enum EFilters {
+  ASC = 'asc',
+  DESC = 'desc',
+}

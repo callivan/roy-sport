@@ -1,6 +1,11 @@
 import React from 'react';
 
-export type IButtonProps = Omit<TButton, keyof IButtonOwnProps> & IButtonOwnProps;
+import { IButtonStylesProps, ITextStylesProps } from './styles';
+
+export type IButtonProps = Omit<TButton, keyof IButtonOwnProps> &
+  IButtonOwnProps &
+  IButtonStylesProps &
+  ITextStylesProps;
 
 type TButton = React.ComponentPropsWithoutRef<'button'>;
 
