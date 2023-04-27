@@ -112,6 +112,7 @@ export const Wrapper = styled('div')<IWrapperStylseProps>(
 
 export const Container = styled('div')<IContainerStylesProps>(({ isActive }) => ({
   position: 'relative',
+  top: '88px',
 
   width: '100%',
   height: '100%',
@@ -146,7 +147,7 @@ export const CircleEffect = styled('span')({
 
 export const List = styled('ul')({
   position: 'relative',
-  top: '0px',
+  top: '50%',
   left: '50%',
 
   display: 'flex',
@@ -155,7 +156,7 @@ export const List = styled('ul')({
 
   width: 'max-content',
 
-  transform: 'translateX(-50%)',
+  transform: 'translate(-50%, -50%)',
 });
 
 export const Item = styled('ul')({});

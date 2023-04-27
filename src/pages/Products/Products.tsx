@@ -1,6 +1,7 @@
 import React, { memo } from 'react';
 
 import { ProductsList } from '@entities';
+import { Scroll } from '@shared';
 import { Header, Layout, Sidebar } from '@widgets';
 
 import * as S from './Products.styles';
@@ -14,9 +15,11 @@ export const Products = memo(function Products({ isTabletSmall, isMobile }: IPro
           <Sidebar isOnlyIcon={isTabletSmall || isMobile} isVertical={!isMobile} />
         </S.SidebarWrapper>
 
-        <S.Content>
-          <ProductsList />
-        </S.Content>
+        <Scroll>
+          <S.Content>
+            <ProductsList />
+          </S.Content>
+        </Scroll>
       </S.Container>
     </Layout>
   );
