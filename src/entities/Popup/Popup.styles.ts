@@ -1,6 +1,6 @@
 import styled, { css, keyframes } from 'styled-components';
 
-import { IContainerStylesProps, IWrapperStylseProps } from './types/styles';
+import { IContainerStylesProps, IItemStylesProps, IWrapperStylseProps } from './types/styles';
 
 const move = keyframes`
   0% {
@@ -49,6 +49,20 @@ const rotateLast = keyframes`
   100% {
     transform: translateX(-9px) rotate(-45deg);
     height: 100%;
+  };`;
+
+const showItem = keyframes`
+  0% {
+    transform: translateY(20px);
+    opacity: 0;
+  };
+  50% {
+    transform: translateY(-5px);
+    opacity: 1;
+  };
+  100% {
+    transform: translateY(0px);
+    opacity: 1;
   };`;
 
 export const Wrapper = styled('div')<IWrapperStylseProps>(
@@ -118,9 +132,6 @@ export const Container = styled('div')<IContainerStylesProps>(({ isActive }) => 
   height: '100%',
 
   pointerEvents: isActive ? 'visible' : 'none',
-  opacity: isActive ? 1 : 0,
-
-  transition: 'opacity .15s ease-in-out',
 
   overflow: 'auto',
 
@@ -128,11 +139,13 @@ export const Container = styled('div')<IContainerStylesProps>(({ isActive }) => 
   paddingInline: '24px',
 
   '& > .circle-effect': {
-    clipPath: isActive ? 'circle(130% at 50% 0%)' : 'circle(0% at 50% 0%)',
+    clipPath: isActive
+      ? 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)'
+      : 'polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)',
   },
 }));
 
-export const CircleEffect = styled('span')({
+export const CircleEffect = styled('span')((props) => ({
   position: 'absolute',
   top: '0px',
   left: '0px',
@@ -140,10 +153,10 @@ export const CircleEffect = styled('span')({
   width: '100%',
   height: '100%',
 
-  backgroundColor: 'white',
+  backgroundColor: props.theme.colors.white,
 
   transition: 'clip-path .3s ease-in-out',
-});
+}));
 
 export const List = styled('ul')({
   position: 'relative',
@@ -159,4 +172,15 @@ export const List = styled('ul')({
   transform: 'translate(-50%, -50%)',
 });
 
-export const Item = styled('ul')({});
+export const Item = styled('ul')<IItemStylesProps>(
+  {
+    opacity: 0,
+    transform: 'translateY(20px)',
+  },
+  ({ isActive, index }) =>
+    isActive
+      ? css`
+          animation: ${showItem} 0.5s ease-in-out forwards ${index / 10}s;
+        `
+      : null,
+);

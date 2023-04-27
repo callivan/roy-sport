@@ -1,4 +1,6 @@
 export interface IProductsProps {
-  isTabletSmall: boolean;
-  isMobile: boolean;
+  isHeaderMobile: boolean;
+  isSidebarMobile: boolean;
+  isSidebarOnlyIcon: boolean;
+  isSidebarVertical: boolean;
 }

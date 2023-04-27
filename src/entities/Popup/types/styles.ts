@@ -5,3 +5,8 @@ export interface IWrapperStylseProps {
 export interface IContainerStylesProps {
   isActive: boolean;
 }
+
+export interface IItemStylesProps {
+  isActive: boolean;
+  index: number;
+}

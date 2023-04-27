@@ -7,19 +7,24 @@ import { Header, Layout, Sidebar } from '@widgets';
 import * as S from './Products.styles';
 import { IProductsProps } from './types/component';
 
-export const Products = memo(function Products({ isTabletSmall, isMobile }: IProductsProps) {
+export const Products = memo(function Products({
+  isHeaderMobile,
+  isSidebarMobile,
+  isSidebarOnlyIcon,
+  isSidebarVertical,
+}: IProductsProps) {
   return (
-    <Layout header={<Header isMobile={isMobile} />}>
-      <S.Container isHorizontal={isMobile}>
-        <S.SidebarWrapper isHorizontal={isMobile}>
-          <Sidebar isOnlyIcon={isTabletSmall || isMobile} isVertical={!isMobile} />
+    <Layout header={<Header isMobile={isHeaderMobile} />}>
+      <S.Container isHorizontal={isSidebarMobile}>
+        <S.SidebarWrapper isHorizontal={isSidebarMobile}>
+          <Sidebar isOnlyIcon={isSidebarOnlyIcon} isVertical={isSidebarVertical} />
         </S.SidebarWrapper>
 
-        <Scroll>
-          <S.Content>
+        <S.Content>
+          <Scroll>
             <ProductsList />
-          </S.Content>
-        </Scroll>
+          </Scroll>
+        </S.Content>
       </S.Container>
     </Layout>
   );

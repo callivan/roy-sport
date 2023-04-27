@@ -6,6 +6,8 @@ export const Content = styled('div')((props) => ({
 
   overflow: 'auto',
 
+  paddingRight: '8px',
+
   'scrollbar-width': 'thin',
   'scrollbar-color': `${props.theme.colors.gray_medium} transparent`,
 
@@ -17,7 +19,7 @@ export const Content = styled('div')((props) => ({
   '&::-webkit-scrollbar-track': {
     backgroundColor: 'transparent',
 
-    marginBlock: '10px',
+    marginBlock: '5px',
   },
 
   '&::-webkit-scrollbar-thumb': {
@@ -28,6 +30,4 @@ export const Content = styled('div')((props) => ({
       backgroundColor: props.theme.colors.gray_dark,
     },
   },
-
-  marginRight: '8px',
 }));

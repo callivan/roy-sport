@@ -8,8 +8,12 @@ export function Wrapper() {
   const media = useMediaContext();
   return (
     <Products
-      isTabletSmall={media.isTableSmall}
-      isMobile={media.isMobileBig || media.isMobileSmall || media.isTableSmall}
+      isHeaderMobile={media.isTableSmall || media.isMobileBig || media.isMobileSmall}
+      isSidebarMobile={media.isMobileBig || media.isMobileSmall}
+      isSidebarOnlyIcon={
+        media.isTabletBig || media.isTableSmall || media.isMobileBig || media.isMobileSmall
+      }
+      isSidebarVertical={media.isDesktop || media.isTabletBig || media.isTableSmall}
     />
   );
 }
