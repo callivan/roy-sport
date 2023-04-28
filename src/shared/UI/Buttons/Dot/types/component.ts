@@ -6,4 +6,5 @@ type TDot = React.ComponentPropsWithoutRef<'button'>;
 
 interface IDotOwnProps {
   isActive?: boolean;
+  children?: React.ReactElement;
 }

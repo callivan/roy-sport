@@ -32,6 +32,9 @@ export const GlobalStyle = createGlobalStyle<{ theme: typeof theme }>((props) =>
   ul: {
     listStyle: 'none',
   },
+  'h1, h2, h3': {
+    margin: '0px',
+  },
   body: {
     position: 'relative',
 
