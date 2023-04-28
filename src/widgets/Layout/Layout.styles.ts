@@ -10,6 +10,11 @@ export const Container = styled('div')((props) => ({
   backgroundColor: props.theme.colors.white,
 }));
 
+export const Header = styled('div')({
+  position: 'relative',
+  zIndex: 1,
+});
+
 export const Content = styled('div')({
   flexGrow: 1,
 

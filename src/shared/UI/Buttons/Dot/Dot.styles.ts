@@ -18,6 +18,10 @@ export const Blur = styled('span')((props) => ({
 }));
 
 export const Button = styled('button')((props) => ({
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+
   width: '10px',
   height: '10px',
 
@@ -25,7 +29,7 @@ export const Button = styled('button')((props) => ({
   backgroundColor: props.theme.colors.gray_dark,
 
   transformOrigin: 'center',
-  transform: 'translate(-4px, -4px)',
+  transform: 'translate(-3px, -3px)',
 
   transition: 'background-color .3s ease-in-out, transform  .3s cubic-bezier(0,0.8,0.3,1)',
 
@@ -37,5 +41,18 @@ export const Button = styled('button')((props) => ({
     transform: 'translate(0px, 0px)',
 
     backgroundColor: props.theme.colors.black_dark,
+  },
+
+  '&:disabled': {
+    pointerEvents: 'none',
+    cursor: 'default',
+
+    backgroundColor: props.theme.colors.gray_dark,
+
+    transform: 'translate(0px, 0px)',
+
+    '& > .button-text, & > .button-icon': {
+      color: props.theme.colors.gray_medium,
+    },
   },
 }));
