@@ -1,1 +1,0 @@
-export { handleNavigationClick } from './click';

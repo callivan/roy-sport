@@ -1,7 +1,7 @@
 import React from 'react';
 import { DefaultTheme } from 'styled-components';
 
-type TTags = 'h1' | 'h2' | 'h3' | 'span' | 'p';
+type TTags = 'h1' | 'h2' | 'h3' | 'span' | 'p' | 'a';
 
 interface ITextOwnProps<E extends TagName> {
   children: string;

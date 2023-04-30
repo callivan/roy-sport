@@ -1,4 +1,5 @@
-import React, { memo } from 'react';
+import React, { memo, useMemo } from 'react';
+import { useLocation, useParams } from 'react-router-dom';
 
 import { Navigation, TNavigationItem } from '@entities';
 import { IconBarbell, IconHoodie, IconSneaker } from '@shared';
@@ -10,15 +11,43 @@ export const Sidebar = memo(function Sidebar({
   isOnlyIcon = false,
   isVertical = true,
 }: TSidebarProps) {
-  const navigationItems: TNavigationItem[] = [
-    { name: 'КРОССОВКИ', isActive: true, icon: <IconSneaker />, count: 10 },
-    { name: 'ОДЕЖДА', isActive: false, icon: <IconHoodie />, count: 24 },
-    { name: 'СПЕЦТОВАРЫ', isActive: false, icon: <IconBarbell />, count: 12 },
-  ];
+  const { pathname } = useLocation();
+  const { categoryName } = useParams<{ categoryName: string }>();
+
+  const navigations: TNavigationItem[] = useMemo(
+    () =>
+      [
+        {
+          name: 'КРОССОВКИ',
+          isActive: false,
+          icon: <IconSneaker />,
+          link: `/${categoryName || 'run'}/sneakers`,
+          count: 10,
+        },
+        {
+          name: 'ОДЕЖДА',
+          isActive: false,
+          icon: <IconHoodie />,
+          link: `/${categoryName || 'run'}/cloth`,
+          count: 24,
+        },
+        {
+          name: 'СПЕЦТОВАРЫ',
+          isActive: false,
+          icon: <IconBarbell />,
+          link: `/${categoryName || 'run'}/special`,
+          count: 12,
+        },
+      ].map((item) => ({
+        ...item,
+        isActive: pathname.includes(item.link.replace(/^\/\d\//gi, '')),
+      })),
+    [pathname, categoryName],
+  );
 
   return (
-    <S.Container isVertical={isVertical}>
-      <Navigation items={navigationItems} isVertical={isVertical} isOnlyIcon={isOnlyIcon} isBage />
+    <S.Container className={isVertical ? 'is-vertical' : ''}>
+      <Navigation items={navigations} isVertical={isVertical} isOnlyIcon={isOnlyIcon} isBage />
     </S.Container>
   );
 });
