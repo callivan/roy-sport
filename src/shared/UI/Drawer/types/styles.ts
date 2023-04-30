@@ -1,4 +1,5 @@
 export interface IWrapperStylesProps {
+  top?: number;
   isTop?: boolean;
 }
 
@@ -7,6 +8,5 @@ export interface IContainerStylesProps {
 }
 
 export interface IButtonStylesProps {
-  isOpen: boolean;
   isTop?: boolean;
 }

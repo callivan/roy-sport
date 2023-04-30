@@ -6,5 +6,6 @@ interface IPopupOwnProps {
 
 export type TPopupItem = {
   name: string;
+  link: string;
   isActive: boolean;
 };

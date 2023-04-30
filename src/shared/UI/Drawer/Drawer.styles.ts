@@ -2,14 +2,12 @@ import styled from 'styled-components';
 
 import { IButtonStylesProps, IContainerStylesProps, IWrapperStylesProps } from './types/styles';
 
-export const Wrapper = styled('div')<IWrapperStylesProps>(({ isTop }) => ({
+export const Wrapper = styled('div')<IWrapperStylesProps>(({ isTop, top = 0 }) => ({
   position: 'fixed',
-  top: '0px',
+  top: `${top}px`,
   left: '0px',
 
   display: 'flex',
-
-  outline: '1px solid red',
 
   ...(isTop
     ? {
@@ -28,6 +26,10 @@ export const Wrapper = styled('div')<IWrapperStylesProps>(({ isTop }) => ({
 
         paddingRight: '30px',
       }),
+
+  '&.is-active': {
+    pointerEvents: 'visible',
+  },
 }));
 
 export const Container = styled('div')<IContainerStylesProps>(({ isTop, ...props }) => ({
@@ -44,12 +46,10 @@ export const ContentWrapper = styled('div')({
   width: '100%',
   height: '100%',
 
-  backgroundColor: 'red',
-
   overflow: 'hidden',
 });
 
-export const Button = styled('button')<IButtonStylesProps>(({ isOpen, isTop, ...props }) => ({
+export const Button = styled('button')<IButtonStylesProps>(({ isTop, ...props }) => ({
   pointerEvents: 'visible',
 
   position: 'absolute',
@@ -75,8 +75,12 @@ export const Button = styled('button')<IButtonStylesProps>(({ isOpen, isTop, ...
       }),
 
   '& > .drawer-icon': {
-    transform: isOpen ? 'rotateY(0deg)' : 'rotateY(180deg)',
+    transform: 'rotateY(180deg)',
 
     transition: 'transform .15s ease-in-out',
+  },
+
+  '&.is-active > .drawer-icon': {
+    transform: 'rotateY(0deg)',
   },
 }));

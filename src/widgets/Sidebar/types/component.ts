@@ -1,7 +1,6 @@
-import { IContainerStylesProps } from './styles';
-
-export type TSidebarProps = ISidebarOwnProps & IContainerStylesProps;
+export type TSidebarProps = ISidebarOwnProps;
 
 interface ISidebarOwnProps {
+  isVertical?: boolean;
   isOnlyIcon?: boolean;
 }

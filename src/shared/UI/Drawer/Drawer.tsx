@@ -7,7 +7,7 @@ import { handleClick, handleClickOutside } from './handlers';
 import { TDrawerProps } from './types/component';
 import { setContainerWidth } from './utils';
 
-export const Drawer = memo(function Drawer({ children, isTop }: TDrawerProps) {
+export const Drawer = memo(function Drawer({ children, isTop, top }: TDrawerProps) {
   const [isOpen, setOpen] = useState<boolean>(false);
 
   const wrapperRef = useRef<HTMLDivElement | null>(null);
@@ -37,12 +37,16 @@ export const Drawer = memo(function Drawer({ children, isTop }: TDrawerProps) {
 
   return (
     <Portal id="drawer">
-      <S.Wrapper isTop={isTop} ref={wrapperRef}>
+      <S.Wrapper className={isOpen ? 'is-active' : ''} top={top} isTop={isTop} ref={wrapperRef}>
         <S.Container isTop={isTop} ref={containerRef}>
           <S.ContentWrapper className="drawer-content">{children}</S.ContentWrapper>
         </S.Container>
 
-        <S.Button isOpen={isOpen} isTop={isTop} onClick={() => handleClick({ setOpen })}>
+        <S.Button
+          className={isOpen ? 'is-active' : ''}
+          isTop={isTop}
+          onClick={() => handleClick({ setOpen })}
+        >
           <IconChevron className="drawer-icon" width={32} height={32} />
         </S.Button>
       </S.Wrapper>

@@ -1,34 +1,29 @@
 import React, { memo, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import { Box, ButtonIcon, ButtonText } from '@shared';
 
 import { Portal } from './components/Portal';
-import { handlePopupClick, handlePopupItemClick } from './handlers';
+import { handlePopupClick } from './handlers';
 import * as S from './Popup.styles';
-import { TPopupItem, TPopupProps } from './types/component';
+import { TPopupProps } from './types/component';
 import { arePropsEqual } from './utils/arePropsEqual';
 
 export const Popup = memo(function Popup({ items }: TPopupProps) {
+  const navigate = useNavigate();
+
   const [isOpen, setOpen] = useState<boolean>(false);
   const [isStart, setStart] = useState<boolean>(false);
-  const [list, setList] = useState<TPopupItem[]>(items);
 
   return (
     <>
       <ButtonIcon
         isActive={isStart}
         onClick={() => {
-          if (isOpen) {
-            setStart(false);
-            setTimeout(() => handlePopupClick({ setOpen }), 300);
-            return;
-          }
-
-          handlePopupClick({ setOpen });
-          setTimeout(() => setStart(true), 100);
+          handlePopupClick({ isOpen, setOpen, setStart });
         }}
       >
-        <S.Wrapper isActive={isStart}>
+        <S.Wrapper className={isStart ? 'is-active' : ''}>
           <Box className="line" as="span" />
           <Box className="line" as="span" />
           <Box className="line" as="span" />
@@ -37,17 +32,18 @@ export const Popup = memo(function Popup({ items }: TPopupProps) {
 
       {isOpen ? (
         <Portal id="popup">
-          <S.Container isActive={isStart}>
+          <S.Container className={isStart ? 'is-active' : ''}>
             <S.CircleEffect className="circle-effect" />
 
             <S.List>
-              {list.map(({ name, isActive }, index) => (
-                <S.Item key={index} isActive={isStart} index={index}>
+              {items.map(({ name, isActive, link }, index) => (
+                <S.Item key={index} className={isStart ? 'is-active' : ''} index={index}>
                   <ButtonText
                     isActive={isActive}
                     onClick={() => {
                       if (isActive) return;
-                      handlePopupItemClick({ index, setList });
+                      handlePopupClick({ isOpen, setOpen, setStart });
+                      navigate(link);
                     }}
                   >
                     {name}

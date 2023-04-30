@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import { Bage, ButtonIcon, ButtonText } from '@shared';
 
-import { handleNavigationClick } from './handlers';
 import * as S from './Navigation.styles';
-import { TNavigationItem, TNavigationProps } from './types/component';
+import { TNavigationProps } from './types/component';
 
 export function Navigation({
   items,
@@ -12,18 +12,18 @@ export function Navigation({
   isVertical = false,
   isOnlyIcon = false,
 }: TNavigationProps) {
-  const [list, setList] = useState<TNavigationItem[]>(items);
+  const navigate = useNavigate();
 
   return (
-    <S.List isVertical={isVertical}>
-      {list.map(({ name, isActive, icon, count }, index) => (
+    <S.List className={isVertical ? 'is-vertical' : ''}>
+      {items.map(({ name, isActive, count, link, icon }, index) => (
         <S.Item key={index}>
           {isOnlyIcon && icon ? (
             <ButtonIcon
               isActive={isActive}
               onClick={() => {
                 if (isActive) return;
-                handleNavigationClick({ index, setList });
+                navigate(link);
               }}
             >
               {icon}
@@ -34,7 +34,7 @@ export function Navigation({
               icon={icon}
               onClick={() => {
                 if (isActive) return;
-                handleNavigationClick({ index, setList });
+                navigate(link);
               }}
             >
               {name}

@@ -4,10 +4,10 @@ import * as S from './Card.styles';
 import { ICardProps } from './types/component';
 import { arePropsEqual } from './utils/arePropsEqual';
 
-export const Card = memo(function Card({ name, price, img }: ICardProps) {
+export const Card = memo(function Card({ name, price, img, currency = 'RUB' }: ICardProps) {
   const formatter = new Intl.NumberFormat('ru', {
     style: 'currency',
-    currency: 'RUB',
+    currency,
     maximumFractionDigits: 0,
     minimumFractionDigits: 0,
   });
