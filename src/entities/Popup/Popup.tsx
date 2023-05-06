@@ -1,9 +1,8 @@
 import React, { memo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { Box, ButtonIcon, ButtonText } from '@shared';
+import { Box, ButtonIcon, ButtonText, Portal } from '@shared';
 
-import { Portal } from './components/Portal';
 import { handlePopupClick } from './handlers';
 import * as S from './Popup.styles';
 import { TPopupProps } from './types/component';

@@ -1,18 +1,25 @@
-import React, { memo, useMemo } from 'react';
+import { animated } from '@react-spring/web';
+import React, { memo, useLayoutEffect, useMemo } from 'react';
 import { useLocation, useParams } from 'react-router-dom';
 
 import { Navigation, TNavigationItem } from '@entities';
 import { IconBarbell, IconHoodie, IconSneaker } from '@shared';
 
+import { useHorizontalAnimation, useVerticalAnimation } from './animations';
 import * as S from './Sidebar.styles';
-import { TSidebarProps } from './types/component';
+import { ISidebarProps } from './types/component';
 
 export const Sidebar = memo(function Sidebar({
   isOnlyIcon = false,
   isVertical = true,
-}: TSidebarProps) {
+}: ISidebarProps) {
   const { pathname } = useLocation();
   const { categoryName } = useParams<{ categoryName: string }>();
+
+  const verticalAnimation = useVerticalAnimation();
+  const horizontalAnimation = useHorizontalAnimation();
+
+  const animation = isVertical ? verticalAnimation : horizontalAnimation;
 
   const navigations: TNavigationItem[] = useMemo(
     () =>
@@ -45,9 +52,17 @@ export const Sidebar = memo(function Sidebar({
     [pathname, categoryName],
   );
 
+  useLayoutEffect(() => {
+    if (/^\/(run|volleyball|basketball)\/(sneakers|cloth|special)$/gi.test(pathname)) {
+      animation.start();
+    }
+  }, [pathname, isVertical]);
+
   return (
-    <S.Container className={isVertical ? 'is-vertical' : ''}>
-      <Navigation items={navigations} isVertical={isVertical} isOnlyIcon={isOnlyIcon} isBage />
-    </S.Container>
+    <animated.div style={{ ...animation.styles, width: '100%', height: '100%' }}>
+      <S.Container className={isVertical ? 'is-vertical' : ''}>
+        <Navigation items={navigations} isVertical={isVertical} isOnlyIcon={isOnlyIcon} isBage />
+      </S.Container>
+    </animated.div>
   );
 });

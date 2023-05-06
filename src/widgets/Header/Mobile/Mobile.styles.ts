@@ -14,6 +14,10 @@ export const Container = styled('div')((props) => ({
 
   paddingBlock: '16px',
   paddingInline: '24px',
+
+  '@media(max-width: 390px)': {
+    paddingInline: '8px',
+  },
 }));
 
 export const Logo = styled('img')({

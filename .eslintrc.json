@@ -84,14 +84,6 @@
     "jsx-a11y/anchor-ambiguous-text": [
       2
     ],
-    // "jsx-a11y/anchor-has-content": [
-    //   2,
-    //   {
-    //     "components": [
-    //       "Anchor"
-    //     ]
-    //   }
-    // ],
     // ----------
     // Настройка ограничений на импорт файлов под архитектуру Feature Slice Design
     "no-restricted-imports": [

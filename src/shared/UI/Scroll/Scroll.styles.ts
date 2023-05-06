@@ -19,7 +19,7 @@ export const Content = styled('div')((props) => ({
   '&::-webkit-scrollbar-track': {
     backgroundColor: 'transparent',
 
-    marginBlock: '5px',
+    margin: '5px',
   },
 
   '&::-webkit-scrollbar-thumb': {
@@ -29,5 +29,9 @@ export const Content = styled('div')((props) => ({
     '&:hover': {
       backgroundColor: props.theme.colors.gray_dark,
     },
+  },
+
+  '&.is-off': {
+    overflow: 'hidden',
   },
 }));

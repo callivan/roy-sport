@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom/client';
 import { ThemeProvider } from '@shared';
 
 import { App } from './app/App';
-import { MediaContextProvider } from './app/contexts';
+import { MediaContextProvider } from './app/contexts/index';
 
 window.addEventListener('DOMContentLoaded', () => {
   const wrapper = document.querySelector('#root');

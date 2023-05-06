@@ -38,15 +38,14 @@ export const FiltersContainer = styled('div')({
   padding: '24px 24px 0px 24px',
 });
 
-export const SidebarWrapper = styled('div')((props) => ({
+export const SidebarWrapper = styled('div')({
   position: 'relative',
-  top: '-1px',
+  top: '-2px',
 
   width: 'max-content',
   height: 'calc(100% + 1px)',
 
-  boxShadow: `-5px 10px 10px 0px ${props.theme.colors.black_clear_70}`,
-  backgroundColor: props.theme.colors.white,
+  zIndex: 1,
 
   '&.is-horizontal': {
     display: 'flex',
@@ -54,8 +53,5 @@ export const SidebarWrapper = styled('div')((props) => ({
 
     width: '100%',
     height: 'max-content',
-
-    boxShadow: `0px -5px 10px 0px ${props.theme.colors.black_clear_70}`,
-    borderTop: `2px solid ${props.theme.colors.gray_medium}`,
   },
-}));
+});

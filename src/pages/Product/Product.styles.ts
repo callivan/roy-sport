@@ -39,6 +39,7 @@ export const Footer = styled('div')({
 
   display: 'flex',
   alignItems: 'flex-end',
+  justifyContent: 'space-between',
   gap: '24px',
 
   width: '100%',

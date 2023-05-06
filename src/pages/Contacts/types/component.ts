@@ -1,3 +1,3 @@
 export interface IMapProps {
-  isHeaderMobile: boolean;
+  isDrawerTop: boolean;
 }

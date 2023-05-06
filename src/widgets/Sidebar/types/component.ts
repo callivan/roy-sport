@@ -1,6 +1,4 @@
-export type TSidebarProps = ISidebarOwnProps;
-
-interface ISidebarOwnProps {
+export interface ISidebarProps {
   isVertical?: boolean;
   isOnlyIcon?: boolean;
 }

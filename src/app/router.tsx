@@ -32,7 +32,7 @@ export const router = () => {
         },
         {
           path: '/contacts',
-          element: <Contacts isHeaderMobile={isTableSmall || isMobileBig || isMobileSmall} />,
+          element: <Contacts isDrawerTop={isTableSmall || isMobileBig || isMobileSmall} />,
         },
       ],
     },

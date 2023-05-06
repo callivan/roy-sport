@@ -1,16 +1,12 @@
 import { Map, Placemark, YMaps } from '@pbe/react-yandex-maps';
 import React from 'react';
 
-import { Drawer } from '@shared';
+import { Drawer } from '@entities';
 
-import { Address } from './components/Address';
-import { Chart } from './components/Chart';
-import { Phone } from './components/Phone';
-import { Social } from './components/Social';
 import * as S from './Contacts.styles';
 import { IMapProps } from './types/component';
 
-export function Contacts({ isHeaderMobile }: IMapProps) {
+export function Contacts({ isDrawerTop }: IMapProps) {
   return (
     <S.Container>
       <YMaps>
@@ -23,13 +19,8 @@ export function Contacts({ isHeaderMobile }: IMapProps) {
         </Map>
       </YMaps>
 
-      <Drawer isTop={isHeaderMobile} top={isHeaderMobile ? 88 : 40}>
-        <S.Contacts>
-          <Chart />
-          <Social />
-          <Phone />
-          <Address />
-        </S.Contacts>
+      <Drawer isPositionTop={isDrawerTop}>
+        <div style={{ width: '400px', height: '400px' }}></div>
       </Drawer>
     </S.Container>
   );
