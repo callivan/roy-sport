@@ -78,8 +78,8 @@ export function generateOwnMetadata({ params }: IParamsProps): Metadata {
   const { categoryKeyword, categoryTitle } = category();
   const { subcategoryDescription, subcategoryKeywords, subcategoryTitle } = subcategory();
   const siteName =
-    process.env.STRAPI_URL && typeof process.env.STRAPI_URL === 'string'
-      ? process.env.STRAPI_URL.replace(/http(s)?:\/\//gi, '')
+    process.env.SITE_URL && typeof process.env.SITE_URL === 'string'
+      ? process.env.SITE_URL.replace(/http(s)?:\/\//gi, '')
       : '';
 
   return {
@@ -92,7 +92,7 @@ export function generateOwnMetadata({ params }: IParamsProps): Metadata {
       title: `Roy Sport | ${subcategoryTitle} для ${categoryTitle}. Страница №${params.page}`,
       description: `Большой выбор ${subcategoryDescription} для ${categoryTitle}. Доставка по всей России. Страница №${params.page}`,
       images: img(),
-      url: process.env.STRAPI_URL,
+      url: process.env.SITE_URL,
       siteName,
     },
 

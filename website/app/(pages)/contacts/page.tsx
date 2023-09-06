@@ -6,8 +6,8 @@ import { Metadata } from 'next/types';
 import { Content } from './components';
 
 const siteName =
-  process.env.STRAPI_URL && typeof process.env.STRAPI_URL === 'string'
-    ? process.env.STRAPI_URL.replace(/http(s)?:\/\//gi, '')
+  process.env.SITE_URL && typeof process.env.SITE_URL === 'string'
+    ? process.env.SITE_URL.replace(/http(s)?:\/\//gi, '')
     : '';
 
 export const metadata: Metadata = {
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     description: 'Вся необходима информация для связи с нами.',
     // eslint-disable-next-line sonarjs/no-duplicate-string
     images: { url: '/mapImg.png', alt: 'Карта', width: 400, height: 266 },
-    url: process.env.STRAPI_URL,
+    url: process.env.SITE_URL,
     siteName,
   },
 
