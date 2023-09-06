@@ -84,7 +84,7 @@ export default ({ env }) => ({
 
 // ./config/plugins.ts
 
-module.exports = ({ env }) => ({
+export default ({ env }) => ({
   upload: {
     config: {
       provider: "local",
