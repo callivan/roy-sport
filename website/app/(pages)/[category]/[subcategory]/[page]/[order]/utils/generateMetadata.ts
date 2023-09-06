@@ -53,21 +53,21 @@ export function generateOwnMetadata({ params }: IParamsProps): Metadata {
     switch (params.subcategory) {
       case 'specials':
         return {
-          url: '/specialsImg.png',
+          url: `${process.env.SITE_URL}/specialsImg.png`,
           alt: 'Спец.товары',
           width: 400,
           height: 266,
         };
       case 'sneakers':
         return {
-          url: '/sneakersImg.png',
+          url: `${process.env.SITE_URL}/sneakersImg.png`,
           alt: 'Кроссовки',
           width: 400,
           height: 266,
         };
       default:
         return {
-          url: '/clothesImg.png',
+          url: `${process.env.SITE_URL}/clothesImg.png`,
           alt: 'Одежда',
           width: 400,
           height: 266,
@@ -86,7 +86,7 @@ export function generateOwnMetadata({ params }: IParamsProps): Metadata {
     title: `Roy Sport | ${subcategoryTitle} для ${categoryTitle}. Страница №${params.page}`,
     description: `Большой выбор ${subcategoryDescription} для ${categoryTitle}. Доставка по всей России. Магазин в Новосибирске. Страница №${params.page}`,
     keywords: `${subcategoryKeywords} Спорт,${categoryKeyword},Nike,Adidas,Jordan,Новосибирск,Страница №${params.page}`,
-    icons: '/logo.svg',
+    icons: `${process.env.SITE_URL}/logo.svg`,
 
     openGraph: {
       title: `Roy Sport | ${subcategoryTitle} для ${categoryTitle}. Страница №${params.page}`,

@@ -16,6 +16,7 @@ export const metadata: Metadata = {
   // eslint-disable-next-line sonarjs/no-duplicate-string
   description: 'Вся необходима информация для связи с нами. Новосибирск',
   keywords: 'Новосибирск,Контакты,Адрес,Социальная сеть,Телефон',
+  icons: `${process.env.SITE_URL}/logo.svg`,
 
   openGraph: {
     title: 'Roy Sport | Контакты',
@@ -29,7 +30,7 @@ export const metadata: Metadata = {
   twitter: {
     title: 'Roy Sport | Контакты',
     description: 'Вся необходима информация для связи с нами.',
-    images: { url: '/mapImg.png', alt: 'Карта', width: 400, height: 266 },
+    images: { url: `${process.env.SITE_URL}/mapImg.png`, alt: 'Карта', width: 400, height: 266 },
     card: 'summary_large_image',
     site: siteName,
   },

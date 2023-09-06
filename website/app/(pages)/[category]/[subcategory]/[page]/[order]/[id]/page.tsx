@@ -38,6 +38,7 @@ export async function generateMetadata({
     title: `Roy Sport | ${product.name}`,
     description: `В магазине спортивной экипировки Roy Sport представлены кроссовки ${product.name} по отличной цене (${product.price}). Размеры в наличии ${product.sizes}`,
     keywords: `${product.name},Цена ${product.price},Спорт,Nike,Adidas,Jordan,Новосибирск`,
+    icons: `${process.env.SITE_URL}/logo.svg`,
 
     openGraph: {
       title: `Roy Sport | ${product.name}`,
