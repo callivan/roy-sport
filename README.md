@@ -108,7 +108,7 @@ export default ({ env }) => ({
 ```
 
 Для работы on-demand revalidation необходимо добавить webhooks в соответствующем разделе strapi.
-Для конввертирования изображений используется [strapi-plugin-local-image-sharp](https://strapi-community.github.io/strapi-plugin-local-image-sharp/).
+Для конвертирования изображений используется [strapi-plugin-local-image-sharp](https://strapi-community.github.io/strapi-plugin-local-image-sharp/).
 Для добавления изображения в формате base64 используюется [strapi-plugin-placeholder](https://www.npmjs.com/package/strapi-plugin-placeholder).
 
 Если возникли проблемы с запуском приложения [telegram](https://t.me/maslinok)
