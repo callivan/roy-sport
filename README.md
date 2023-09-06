@@ -81,6 +81,24 @@ export default ({ env }) => ({
     populateRelations: env.bool("WEBHOOKS_POPULATE_RELATIONS", false),
   },
 });
+
+// ./config/plugins.ts
+
+module.exports = ({ env }) => ({
+  upload: {
+    config: {
+      provider: "local",
+      breakpoints: {},
+    },
+  },
+
+  placeholder: {
+    enabled: true,
+    config: {
+      size: 10,
+    },
+  },
+});
 ```
 
 Если возникли проблемы с запуском приложения [telegram](https://t.me/maslinok)
