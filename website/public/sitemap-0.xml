@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+<url><loc>http://localhost:3000/server-sitemap.xml</loc><lastmod>2023-09-05T17:29:37.006Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>http://localhost:3000/manifest.webmanifest</loc><lastmod>2023-09-05T17:29:37.006Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>http://localhost:3000/contacts</loc><lastmod>2023-09-05T17:29:37.006Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>http://localhost:3000/basketball/sneakers/1/ASC</loc><lastmod>2023-09-05T17:29:37.006Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>http://localhost:3000/basketball/clothes/1/ASC</loc><lastmod>2023-09-05T17:29:37.006Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>http://localhost:3000/basketball/specials/1/ASC</loc><lastmod>2023-09-05T17:29:37.006Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>http://localhost:3000/volleyball/sneakers/1/ASC</loc><lastmod>2023-09-05T17:29:37.006Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>http://localhost:3000/volleyball/clothes/1/ASC</loc><lastmod>2023-09-05T17:29:37.006Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>http://localhost:3000/volleyball/specials/1/ASC</loc><lastmod>2023-09-05T17:29:37.006Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>http://localhost:3000/run/sneakers/1/ASC</loc><lastmod>2023-09-05T17:29:37.006Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>http://localhost:3000/run/clothes/1/ASC</loc><lastmod>2023-09-05T17:29:37.007Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>http://localhost:3000/run/specials/1/ASC</loc><lastmod>2023-09-05T17:29:37.007Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>http://localhost:3000/basketball/sneakers/1/DESC</loc><lastmod>2023-09-05T17:29:37.007Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>http://localhost:3000/basketball/clothes/1/DESC</loc><lastmod>2023-09-05T17:29:37.007Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>http://localhost:3000/basketball/specials/1/DESC</loc><lastmod>2023-09-05T17:29:37.007Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>http://localhost:3000/volleyball/sneakers/1/DESC</loc><lastmod>2023-09-05T17:29:37.007Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>http://localhost:3000/volleyball/clothes/1/DESC</loc><lastmod>2023-09-05T17:29:37.007Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>http://localhost:3000/volleyball/specials/1/DESC</loc><lastmod>2023-09-05T17:29:37.007Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>http://localhost:3000/run/sneakers/1/DESC</loc><lastmod>2023-09-05T17:29:37.007Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>http://localhost:3000/run/clothes/1/DESC</loc><lastmod>2023-09-05T17:29:37.007Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>http://localhost:3000/run/specials/1/DESC</loc><lastmod>2023-09-05T17:29:37.007Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+</urlset>

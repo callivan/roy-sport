@@ -2,12 +2,13 @@ export interface IAddress {
   id: string;
   address: string;
   latitude: number;
-  longitude: string;
+  longitude: number;
 }
 
 export interface IPhone {
   id: string;
   phone: string;
+  active: boolean;
 }
 
 export enum ESocialIcon {

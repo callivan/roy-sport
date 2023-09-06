@@ -1,6 +1,5 @@
 'use client';
 
-import { fetchClothes, fetchSneakers, fetchSpecials } from '@api';
 import { Navigation } from '@entities';
 import { IconBarbell, IconHoodie, IconSneaker } from '@shared/icons';
 import { Badge, ButtonText } from '@shared/ui';
@@ -8,9 +7,11 @@ import { useMatchMedia } from '@shared/utils';
 import classNames from 'classnames';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useLayoutEffect, useMemo } from 'react';
+import { useMemo } from 'react';
 
-export function Aside({ className, ...props }: React.ComponentPropsWithRef<'aside'>) {
+import { TAsideProps } from './types/component';
+
+export function Aside({ counts, className, ...props }: TAsideProps) {
   const { tablet, mobileBig } = useMatchMedia({
     sizeNames: ['tablet', 'mobileBig'],
     queries: ['(max-width: 1024px)', '(max-width: 595px)'],
@@ -18,32 +19,16 @@ export function Aside({ className, ...props }: React.ComponentPropsWithRef<'asid
 
   const pathname = usePathname();
 
-  const category = useMemo(() => {
-    return pathname.split('/')[1] || 'run';
+  const { category, order } = useMemo(() => {
+    const paths = pathname.split('/');
+    const category = paths[1] || 'run';
+    const order = paths[paths.length === 5 ? paths.length - 1 : paths.length - 2] || 'DESC';
+    return { category, order };
   }, [pathname]);
 
   const isActive = (pathname: string, link: string) => {
     return pathname.split('/')[2] === link.split('/')[2];
   };
-
-  useLayoutEffect(() => {
-    const fetch = async () => {
-      const sneakersFetcher = fetchSneakers({ isClientSide: true });
-      // const clothesFetcher = fetchClothes();
-      // const specialsFetcher = fetchSpecials();
-      // const data = await Promise.all([
-      //   sneakersFetcher.fetch(),
-      //   clothesFetcher.fetch(),
-      //   specialsFetcher.fetch(),
-      // ]);
-
-      const data = await sneakersFetcher.fetch();
-
-      console.log(data);
-    };
-
-    fetch();
-  }, [category]);
 
   return (
     <aside
@@ -86,22 +71,22 @@ export function Aside({ className, ...props }: React.ComponentPropsWithRef<'asid
             id: '1',
             name: 'КРОССОВКИ',
             icon: <IconSneaker />,
-            link: `/${category}/sneakers`,
-            count: 0,
+            link: `/${category}/sneakers/1/${order}`,
+            count: counts[0] ?? 0,
           },
           {
             id: '2',
             name: 'ОДЕЖДА',
             icon: <IconHoodie />,
-            link: `/${category}/cloth`,
-            count: 0,
+            link: `/${category}/clothes/1/${order}`,
+            count: counts[1] ?? 0,
           },
           {
             id: '3',
             name: 'СПЕЦТОВАРЫ',
             icon: <IconBarbell />,
-            link: `/${category}/special`,
-            count: 0,
+            link: `/${category}/specials/1/${order}`,
+            count: counts[2] ?? 0,
           },
         ]}
         elementItem={({ name, icon, link, count }) => (

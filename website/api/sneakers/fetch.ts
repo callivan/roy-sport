@@ -1,16 +1,27 @@
 import { fetcher } from '@api';
+import { IProduct, IRequestProps } from '@types';
+import { IResponseProductsProps } from '@types';
 
-import { IResponseSneakersProps } from './types';
-
-interface IFetchSneakersProps {
-  isClientSide?: boolean;
-}
-
-export function fetchSneakers({ isClientSide = false }: IFetchSneakersProps) {
-  const fetcherSneakers = fetcher({ path: 'sneakers', isClientSide });
+export function fetchSneakers(props: IRequestProps) {
+  const fetcherSneakers = fetcher({
+    path: 'sneakers',
+    tag: 'sneakers',
+    ...props,
+  });
 
   return {
-    fetch: (): Promise<IResponseSneakersProps> => fetcherSneakers.fetch(),
-    abort: fetcherSneakers.abort,
+    fetch: (): Promise<IResponseProductsProps> => fetcherSneakers.fetch(),
+  };
+}
+
+export function fetchSneakersOne(props: Omit<IRequestProps, 'pagination'> & { id: string }) {
+  const fetcherSneakers = fetcher({
+    path: 'sneakers',
+    tag: 'sneakers',
+    ...props,
+  });
+
+  return {
+    fetch: (): Promise<IProduct | { data: null }> => fetcherSneakers.fetch(),
   };
 }

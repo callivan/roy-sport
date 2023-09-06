@@ -3,33 +3,42 @@
 import './header.css';
 
 import { Navigation } from '@entities';
-import { ButtonText, Popup } from '@shared/ui';
+import { ButtonText, IPopupRefProps, Popup } from '@shared/ui';
 import classNames from 'classnames';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { useMemo, useRef } from 'react';
 
 export function Header({ className, ...props }: React.ComponentPropsWithRef<'header'>) {
   const pathname = usePathname();
 
-  const getSubcategory = (pathname: string) => {
-    return pathname.split('/')[2] || 'sneakers';
-  };
+  const popuRef = useRef<IPopupRefProps | null>(null);
+
+  const { subcategory, order } = useMemo(() => {
+    const paths = pathname.split('/');
+    const subcategory = paths[2] || 'sneakers';
+    const order = ['ASC', 'DESC'].includes(paths[paths.length - 1])
+      ? paths[paths.length - 1]
+      : 'DESC';
+
+    return { subcategory, order };
+  }, [pathname]);
 
   const isActive = (pathname: string, link: string) => {
     return pathname.split('/')[1] === link.split('/')[1];
   };
 
   const routes = [
-    { id: '1', name: 'БЕГ', link: `/run/${getSubcategory(pathname)}` },
+    { id: '1', name: 'БЕГ', link: `/run/${subcategory}/1/${order}` },
     {
       id: '2',
       name: 'ВОЛЕЙБОЛ',
-      link: `/volleyball/${getSubcategory(pathname)}`,
+      link: `/volleyball/${subcategory}/1/${order}`,
     },
     {
       id: '3',
       name: 'БАСКЕТБОЛ',
-      link: `/basketball/${getSubcategory(pathname)}`,
+      link: `/basketball/${subcategory}/1/${order}`,
     },
     { id: '4', name: 'КОНТАКТЫ', link: '/contacts' },
   ];
@@ -107,6 +116,7 @@ export function Header({ className, ...props }: React.ComponentPropsWithRef<'hea
       />
 
       <Popup
+        ref={popuRef}
         className={classNames(
           // Visibility
           'hidden',
@@ -119,7 +129,14 @@ export function Header({ className, ...props }: React.ComponentPropsWithRef<'hea
           data={routes}
           elementItem={({ name, link }) => (
             <Link href={link}>
-              <ButtonText isActive={isActive(pathname, link)}>{name}</ButtonText>
+              <ButtonText
+                isActive={isActive(pathname, link)}
+                onClick={() => {
+                  popuRef.current && popuRef.current.onClose();
+                }}
+              >
+                {name}
+              </ButtonText>
             </Link>
           )}
           isColumn

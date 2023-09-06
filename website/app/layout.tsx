@@ -1,7 +1,9 @@
 import './globals.css';
 
-import { Aside, Header } from '@widgets';
+import { Loader } from '@entities';
+import { Header } from '@widgets';
 import classNames from 'classnames';
+import { SkeletonTheme } from 'react-loading-skeleton';
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -27,22 +29,20 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           'isolate',
         )}
       >
-        <Header
-          className={classNames(
-            // Grid
-            'col-span-full row-start-1 row-end-2',
-          )}
-        />
+        <>
+          <Header
+            className={classNames(
+              // Grid
+              'col-span-full row-start-1 row-end-2',
+            )}
+          />
 
-        <Aside
-          className={classNames(
-            // Grid
-            'col-span-1 row-span-2',
-            // Mobile big
-            's:col-span-full s:row-span-1',
-          )}
-        />
-        {children}
+          <SkeletonTheme baseColor="#E1E3E670" highlightColor="#E1E3E6">
+            {children}
+          </SkeletonTheme>
+        </>
+
+        <Loader />
       </body>
     </html>
   );

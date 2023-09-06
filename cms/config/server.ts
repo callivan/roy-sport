@@ -1,11 +1,14 @@
 export default ({ env }) => ({
-  host: env('HOST', '0.0.0.0'),
-  port: env.int('PORT', 1337),
-  url: env('STRAPI_URL'),
+  host: env("HOST"),
+  url: env("STRAPI_URL"),
+  port: env.int("PORT"),
   app: {
-    keys: env.array('APP_KEYS'),
+    keys: env.array("APP_KEYS"),
   },
   webhooks: {
-    populateRelations: env.bool('WEBHOOKS_POPULATE_RELATIONS', false),
+    populateRelations: env.bool("WEBHOOKS_POPULATE_RELATIONS", false),
+    defaultHeaders: {
+      Authorization: env("STRAPI_TOKEN"),
+    },
   },
 });

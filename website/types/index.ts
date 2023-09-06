@@ -1,6 +1,7 @@
 export type { IProduct } from './IProduct';
-export type { ISpecial } from './ISpecial';
-export type { IAddress, IPhone, ISocial } from './IContact';
+export { type IAddress, type IPhone, type ISocial, ESocialIcon } from './IContact';
 export type { IPagination } from './IPagination';
-export type { TOrder } from './IFIlter';
+export type { TOrder, TCategory, TSubcategory } from './IFIlter';
 export type { IImg } from './IImg';
+export type { IRequestProps, IFiltersRequestProps, IPaginationRequestProps } from './IRequest';
+export type { IResponseProductsProps, IResponseContactsProps } from './IResponse';

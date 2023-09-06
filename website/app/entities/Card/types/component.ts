@@ -8,6 +8,7 @@ interface ICardOwnProps {
   name: string;
   price: number;
   preview?: string;
+  isClientSide?: boolean;
 }
 
 export type TCardProps = Omit<TButton, keyof ICardOwnProps> & ICardOwnProps;

@@ -1,16 +1,28 @@
-import { imageLoader } from '@shared/utils';
+import { MyImage } from '@shared/ui';
 import classNames from 'classnames';
-import Image from 'next/image';
 
 import { TCardProps } from './types/component';
 
-export function Card({ src, preview, alt, name, price, className, ...props }: TCardProps) {
+export function Card({
+  src,
+  preview,
+  alt,
+  name,
+  price,
+  className,
+  isClientSide = false,
+  ...props
+}: TCardProps) {
   const formatter = new Intl.NumberFormat('ru', {
     style: 'currency',
     currency: 'RUB',
     minimumFractionDigits: 0,
     maximumFractionDigits: 0,
   });
+
+  const url = isClientSide
+    ? (process.env.STRAPI_URL as string)
+    : (`http://${process.env.STRAPI_CONTAINER}:1337` as string);
 
   return (
     <button
@@ -44,10 +56,10 @@ export function Card({ src, preview, alt, name, price, className, ...props }: TC
         'group transition-transform duration-200 ease-in-out',
 
         // Hover
-        'hover:scale-[0.98]',
+        'hover:scale-[0.99]',
 
         // Active
-        'active:scale-[0.96]',
+        'active:scale-[0.98]',
       )}
       {...props}
     >
@@ -58,17 +70,20 @@ export function Card({ src, preview, alt, name, price, className, ...props }: TC
 
           // Size
           'w-full h-full',
+
+          // Color
+          'bg-gray-450',
         )}
       >
-        <Image
-          loader={imageLoader}
+        <MyImage
           alt={alt}
-          src={src}
+          src={url + src}
           fill
           placeholder="blur"
           sizes="100%"
           blurDataURL={preview}
-          quality={60}
+          quality={80}
+          priority
           style={{
             objectFit: 'cover',
             objectPosition: 'center',
@@ -134,7 +149,7 @@ export function Card({ src, preview, alt, name, price, className, ...props }: TC
           'w-full h-full',
 
           // Effect
-          'blur-[2px]',
+          'blur-[4px]',
 
           // Color
           'bg-black-50',

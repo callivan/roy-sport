@@ -1,12 +1,23 @@
 import { fetcher } from '@api';
+import { IProduct, IRequestProps } from '@types';
+import { IResponseProductsProps } from '@types';
 
-import { IResponseSpecialsProps } from './types';
-
-export function fetchSpecials() {
-  const fetcherSpecials = fetcher({ path: 'specials' });
+export function fetchSpecials(props: IRequestProps) {
+  const fetcherSpecials = fetcher({ path: 'specials', tag: 'specials', ...props });
 
   return {
-    fetch: (): Promise<IResponseSpecialsProps> => fetcherSpecials.fetch(),
-    abort: fetcherSpecials.abort,
+    fetch: (): Promise<IResponseProductsProps> => fetcherSpecials.fetch(),
+  };
+}
+
+export function fetchSpecialsOne(props: Omit<IRequestProps, 'pagination'> & { id: string }) {
+  const fetcherSpecials = fetcher({
+    path: 'specials',
+    tag: 'specials',
+    ...props,
+  });
+
+  return {
+    fetch: (): Promise<IProduct | { data: null }> => fetcherSpecials.fetch(),
   };
 }

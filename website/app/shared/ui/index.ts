@@ -3,3 +3,4 @@ export * from './Badge/index';
 export * from './Drawer/index';
 export * from './Popup/index';
 export * from './Scroll/index';
+export * from './Image/index';

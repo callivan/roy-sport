@@ -4,7 +4,8 @@
   "info": {
     "singularName": "special",
     "pluralName": "specials",
-    "displayName": "Special"
+    "displayName": "Special",
+    "description": ""
   },
   "options": {
     "draftAndPublish": false
@@ -19,6 +20,12 @@
       "type": "float",
       "required": true
     },
+    "categories": {
+      "type": "component",
+      "repeatable": true,
+      "component": "categories.category",
+      "required": true
+    },
     "img": {
       "allowedTypes": [
         "images"
@@ -27,10 +34,12 @@
       "multiple": false,
       "required": true
     },
-    "categories": {
-      "type": "component",
-      "repeatable": true,
-      "component": "components.category",
+    "thumbnail": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false,
       "required": true
     }
   }

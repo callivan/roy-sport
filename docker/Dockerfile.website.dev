@@ -4,6 +4,8 @@ WORKDIR /app
 
 COPY package*.json /app
 
+COPY /next-sitemap/package.json /app/node_modules/next-sitemap
+
 RUN npm ci
 
 COPY . /app

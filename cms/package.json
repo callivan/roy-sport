@@ -1,5 +1,5 @@
 {
-  "name": "cms",
+  "name": "my-project",
   "private": true,
   "version": "0.1.0",
   "description": "A Strapi application",
@@ -10,18 +10,18 @@
     "strapi": "strapi"
   },
   "dependencies": {
-    "@strapi/plugin-i18n": "4.12.4",
-    "@strapi/plugin-users-permissions": "4.12.4",
-    "@strapi/provider-upload-local": "^4.12.4",
-    "@strapi/strapi": "4.12.4",
+    "@strapi/plugin-i18n": "4.12.5",
+    "@strapi/plugin-users-permissions": "4.12.5",
+    "@strapi/strapi": "4.12.5",
     "pg": "8.8.0",
-    "strapi-plugin-local-image-sharp": "^1.7.0"
+    "strapi-plugin-local-image-sharp": "^1.7.0",
+    "strapi-plugin-placeholder": "^4.4.0"
   },
   "author": {
     "name": "A Strapi developer"
   },
   "strapi": {
-    "uuid": "de9c0c9d-fe11-4b64-9518-90f0d9f9e568"
+    "uuid": "650f6919-bcdd-44c4-9b4d-7139c71ff19d"
   },
   "engines": {
     "node": ">=16.0.0 <=20.x.x",

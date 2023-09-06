@@ -69,10 +69,10 @@ export function ButtonContained({
         'group duration-50 transition-[transform_background-color] ease-in-out',
 
         // Hover
-        'hover:scale-[0.98]',
+        'hover:scale-[0.99]',
 
         // Action
-        'active:scale-[0.95]',
+        'active:scale-[0.98]',
 
         // Disabled
         'disabled:bg-black-50 disabled:pointer-events-none cursor-default',

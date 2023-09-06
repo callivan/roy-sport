@@ -1,18 +1,30 @@
 /** @type {import('next').NextConfig} */
 
 const nextConfig = {
+  async redirects() {
+    return [
+      {
+        source: '/',
+        destination: '/run/sneakers/1/DESC',
+        permanent: false,
+      },
+    ];
+  },
+
   images: {
     formats: ['image/avif', 'image/webp'],
+    domains: ['localhost'],
   },
 
   webpack: (config) => {
     config.watchOptions = {
       ...config.watchOptions,
-      poll: 1000,
-      aggregateTimeout: 100,
-    }
-    return config;
-  }
-}
+      poll: 800,
+      aggregateTimeout: 300,
+    };
 
-module.exports = nextConfig
+    return config;
+  },
+};
+
+module.exports = nextConfig;

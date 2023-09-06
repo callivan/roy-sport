@@ -1,12 +1,23 @@
 import { fetcher } from '@api';
+import { IProduct, IRequestProps } from '@types';
+import { IResponseProductsProps } from '@types';
 
-import { IResponseClothesProps } from './types';
-
-export function fetchClothes() {
-  const fetcherClothes = fetcher({ path: 'cloths' });
+export function fetchClothes(props: IRequestProps) {
+  const fetcherClothes = fetcher({ path: 'cloths', tag: 'clothes', ...props });
 
   return {
-    fetch: (): Promise<IResponseClothesProps> => fetcherClothes.fetch(),
-    abort: fetcherClothes.abort,
+    fetch: (): Promise<IResponseProductsProps> => fetcherClothes.fetch(),
+  };
+}
+
+export function fetchClothesOne(props: Omit<IRequestProps, 'pagination'> & { id: string }) {
+  const fetcherClothes = fetcher({
+    path: 'cloths',
+    tag: 'clothes',
+    ...props,
+  });
+
+  return {
+    fetch: (): Promise<IProduct | { data: null }> => fetcherClothes.fetch(),
   };
 }

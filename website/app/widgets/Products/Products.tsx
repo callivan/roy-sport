@@ -1,8 +1,19 @@
-import { Filter, List } from '@features';
+import { Filter, List, Pagination } from '@features';
 import { Scroll } from '@shared/ui';
+import { TOrder } from '@types';
 import classNames from 'classnames';
 
-export function Products({ className, ...props }: React.ComponentPropsWithRef<'div'>) {
+import { TProductsProps } from './types/component';
+
+export function Products({
+  products,
+  currentPage,
+  pageCount,
+  className,
+  pathname,
+  ...props
+}: TProductsProps) {
+  const pathChunk = pathname.split('/');
   return (
     <div
       className={classNames(
@@ -50,7 +61,7 @@ export function Products({ className, ...props }: React.ComponentPropsWithRef<'d
           'xs:px-2',
         )}
       >
-        <Filter />
+        <Filter pathname={pathname} />
       </div>
 
       <Scroll
@@ -59,7 +70,7 @@ export function Products({ className, ...props }: React.ComponentPropsWithRef<'d
           'flex-grow',
 
           // Indent
-          'pr-[40px] pt-[80px]',
+          'pr-[40px] py-[80px]',
           // Tablet big
           'lg:pr-3',
           // Mobile big
@@ -68,8 +79,16 @@ export function Products({ className, ...props }: React.ComponentPropsWithRef<'d
           'xs:pr-1',
         )}
       >
-        <List />
+        <List pathname={pathname} list={products} />
       </Scroll>
+
+      <Pagination
+        pathname={pathChunk.slice(0, pathChunk.length - 2).join('/')}
+        currentPage={currentPage}
+        pageCount={pageCount}
+        order={pathChunk[pathChunk.length - 1] as TOrder}
+        step={2}
+      />
     </div>
   );
 }

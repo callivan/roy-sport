@@ -1,0 +1,34 @@
+{
+  "kind": "singleType",
+  "collectionName": "contacts",
+  "info": {
+    "singularName": "contact",
+    "pluralName": "contacts",
+    "displayName": "Contact",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "addresses": {
+      "type": "component",
+      "repeatable": true,
+      "component": "contacts.address",
+      "required": false
+    },
+    "phones": {
+      "type": "component",
+      "repeatable": true,
+      "component": "contacts.phone",
+      "required": false
+    },
+    "socials": {
+      "type": "component",
+      "repeatable": true,
+      "component": "contacts.social",
+      "required": false
+    }
+  }
+}

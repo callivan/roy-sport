@@ -48,6 +48,9 @@
       "@api": [
         "./api/index.ts"
       ],
+      "@consts": [
+        "./consts/index.ts"
+      ],
     }
   },
   "include": [

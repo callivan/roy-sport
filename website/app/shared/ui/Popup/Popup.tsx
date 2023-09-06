@@ -3,13 +3,26 @@
 import './popup.css';
 
 import classNames from 'classnames';
-import { useState } from 'react';
+import { forwardRef, useImperativeHandle, useState } from 'react';
 
 import { Portal } from '../../utils/Portal';
-import { TPopupProps } from './types/component';
+import { IPopupRefProps, TPopupProps } from './types/component';
 
-export function Popup({ children, className, portalStyles = '', ...props }: TPopupProps) {
+export const Popup = forwardRef<IPopupRefProps, TPopupProps>(function Popup(
+  { children, className, portalStyles = '', ...props },
+  ref,
+) {
   const [isOpen, setOpen] = useState<boolean>(false);
+
+  useImperativeHandle(
+    ref,
+    () => ({
+      onClose: () => {
+        setOpen(false);
+      },
+    }),
+    [],
+  );
 
   return (
     <>
@@ -76,4 +89,4 @@ export function Popup({ children, className, portalStyles = '', ...props }: TPop
       </Portal>
     </>
   );
-}
+});

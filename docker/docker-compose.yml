@@ -3,6 +3,7 @@ version: 1.0.0
 services:
   website:
     container_name: website
+    restart: unless-stopped
     build:
       context: ../website
       dockerfile: ../docker/Dockerfile.website.${MODE:-dev}
@@ -12,9 +13,10 @@ services:
       - ../website:/app
       - /app/node_modules
     environment:
+      - SITE_URL=${SITE_URL}
       - STRAPI_URL=${STRAPI_URL}
-      - STRAPI_CONTAINER=${STRAPI_CONTAINER}
       - STRAPI_TOKEN=${STRAPI_TOKEN}
+      - STRAPI_CONTAINER=${STRAPI_CONTAINER}
     networks:
       - strapi
     depends_on:
@@ -38,7 +40,9 @@ services:
       - API_TOKEN_SALT=${API_TOKEN_SALT}
       - ADMIN_JWT_SECRET=${ADMIN_JWT_SECRET}
       - TRANSFER_TOKEN_SALT=${TRANSFER_TOKEN_SALT}
+      - JWT_SECRET=${JWT_SECRET}
       - STRAPI_URL=${STRAPI_URL}
+      - STRAPI_TOKEN=${STRAPI_TOKEN}
       - DATABASE_CLIENT=${DATABASE_CLIENT}
       - DATABASE_HOST=${DATABASE_HOST}
       - DATABASE_PORT=${DATABASE_PORT}
@@ -60,7 +64,8 @@ services:
       - POSTGRES_USER=${DATABASE_USERNAME}
       - POSTGRES_DB=${DATABASE_NAME}
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U ${DATABASE_USERNAME} -d ${DATABASE_NAME}"]
+      test:
+        ["CMD-SHELL", "pg_isready -U ${DATABASE_USERNAME} -d ${DATABASE_NAME}"]
       interval: 10s
       timeout: 5s
       retries: 5

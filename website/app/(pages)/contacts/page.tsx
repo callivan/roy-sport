@@ -1,19 +1,55 @@
-'use client';
-
-import './contacts.css';
-
-import { Info } from '@entities';
-import { Map, Placemark, YMaps } from '@pbe/react-yandex-maps';
-import { IconChevron, IconInstagram, IconMarker, IconPhone, IconVK } from '@shared/icons';
-import { ButtonText, Drawer, Scroll } from '@shared/ui';
-import { useMatchMedia } from '@shared/utils';
+import { fetchContacts } from '@api';
+import { Empty } from '@entities';
 import classNames from 'classnames';
+import { Metadata } from 'next/types';
 
-export default function Contacts() {
-  const { mobileBig } = useMatchMedia({
-    sizeNames: ['mobileBig'],
-    queries: ['(max-width: 595px)', '(hover:none)'],
-  });
+import { Content } from './components';
+
+const siteName =
+  process.env.STRAPI_URL && typeof process.env.STRAPI_URL === 'string'
+    ? process.env.STRAPI_URL.replace(/http(s)?:\/\//gi, '')
+    : '';
+
+export const metadata: Metadata = {
+  // eslint-disable-next-line sonarjs/no-duplicate-string
+  title: 'Roy Sport | Контакты',
+  // eslint-disable-next-line sonarjs/no-duplicate-string
+  description: 'Вся необходима информация для связи с нами. Новосибирск',
+  keywords: 'Новосибирск,Контакты,Адрес,Социальная сеть,Телефон',
+
+  openGraph: {
+    title: 'Roy Sport | Контакты',
+    description: 'Вся необходима информация для связи с нами.',
+    // eslint-disable-next-line sonarjs/no-duplicate-string
+    images: { url: '/mapImg.png', alt: 'Карта', width: 400, height: 266 },
+    url: process.env.STRAPI_URL,
+    siteName,
+  },
+
+  twitter: {
+    title: 'Roy Sport | Контакты',
+    description: 'Вся необходима информация для связи с нами.',
+    images: { url: '/mapImg.png', alt: 'Карта', width: 400, height: 266 },
+    card: 'summary_large_image',
+    site: siteName,
+  },
+
+  appleWebApp: {
+    title: 'Roy Sport | Контакты',
+    startupImage: {
+      url: '/mapImg.png',
+    },
+  },
+};
+
+export default async function Contacts() {
+  const contactsFetch = fetchContacts({});
+  const contacts = await contactsFetch.fetch();
+
+  const isEmpty =
+    !contacts ||
+    (!contacts.socials && !contacts.phones && !contacts.addresses) ||
+    (!contacts.addresses.length && !contacts.phones.length && !contacts.socials.length);
 
   return (
     <>
@@ -32,84 +68,10 @@ export default function Contacts() {
           'w-full h-full',
 
           // Color
-          'bg-purple-50',
+          'bg-gray-50',
         )}
       >
-        <YMaps>
-          <Map width="100%" height="100%" state={{ center: [55.030204, 82.92043], zoom: 17 }}>
-            <Placemark geometry={[55.030204, 82.92043]} />
-          </Map>
-        </YMaps>
-
-        <Drawer
-          className={classNames(
-            // Size
-            'w-[60%]',
-            // Mobile big
-            's:w-full s:h-[70%]',
-          )}
-          icon={<IconChevron className="fill-black-900 rotate-180" width={32} height={32} />}
-          position={mobileBig ? 'top' : 'left'}
-          portalStyles="padding-top: 88px"
-        >
-          <Scroll
-            className={classNames(
-              // Indent
-              'pl-3 pr-2 py-2 mr-1',
-            )}
-          >
-            <div
-              className={classNames(
-                // Position
-                'relative top-[50%]',
-
-                // Flex
-                'flex flex-wrap gap-x-2 gap-y-3',
-
-                //Size
-                'max-w-[500px] min-w-[250px] w-full h-max',
-
-                // Transform
-                'translate-y-[-60%]',
-
-                // Indent
-                'mx-auto',
-              )}
-            >
-              <Info
-                title="Социальные сети:"
-                data={[
-                  { id: '1', name: 'https://instagram.com', icon: <IconInstagram /> },
-                  { id: '2', name: 'https://vk.com', icon: <IconVK /> },
-                ]}
-                element={({ name, icon }) => (
-                  <a>
-                    <ButtonText icon={icon}>{name}</ButtonText>
-                  </a>
-                )}
-              />
-
-              <Info
-                title="Телефоны:"
-                data={[{ id: '1', name: '+7 923 122-1212', icon: <IconPhone /> }]}
-                element={({ name, icon }) => (
-                  <a>
-                    <ButtonText icon={icon}>{name}</ButtonText>
-                  </a>
-                )}
-              />
-
-              <Info
-                className="w-full"
-                title="Адреса:"
-                data={[
-                  { id: '1', name: 'Новосибирск, ул. Пермитина, д. 24', icon: <IconMarker /> },
-                ]}
-                element={({ name, icon }) => <ButtonText icon={icon}>{name}</ButtonText>}
-              />
-            </div>
-          </Scroll>
-        </Drawer>
+        {isEmpty ? <Empty /> : <Content data={contacts} />}
       </main>
     </>
   );

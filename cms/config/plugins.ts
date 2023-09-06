@@ -2,10 +2,14 @@ module.exports = ({ env }) => ({
   upload: {
     config: {
       provider: "local",
-      breakpoints: {
-        thumbnail: 250,
-        preview: 50,
-      },
+      breakpoints: {},
+    },
+  },
+
+  placeholder: {
+    enabled: true,
+    config: {
+      size: 10,
     },
   },
 });

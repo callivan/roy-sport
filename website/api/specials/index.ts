@@ -1,1 +1,1 @@
-export { fetchSpecials } from './fetch';
+export { fetchSpecials, fetchSpecialsOne } from './fetch';

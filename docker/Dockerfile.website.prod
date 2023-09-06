@@ -1,0 +1,19 @@
+FROM node:18-alpine
+
+RUN apk update && apk add curl
+
+WORKDIR /app
+
+COPY package*.json /app
+
+COPY /next-sitemap/package.json /app/node_modules/next-sitemap
+
+RUN npm ci
+
+COPY . /app
+
+EXPOSE 3000
+
+RUN chmod +x entrypoint.sh
+
+ENTRYPOINT ["/bin/sh", "entrypoint.sh"]

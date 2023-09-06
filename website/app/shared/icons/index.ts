@@ -7,3 +7,5 @@ export { IconSneaker } from './Sneaker';
 export { IconVK } from './VK';
 export { IconPhone } from './Phone';
 export { IconLogo } from './Logo';
+export { IconWhatsapp } from './Whatsapp';
+export { IconTelegram } from './Telegram';

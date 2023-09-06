@@ -52,7 +52,7 @@ export default function NotFound() {
         Страница с таким адресом не существует, жмите на кнопочку.
       </span>
 
-      <Link href={'/run/sneakers'}>
+      <Link href={'/run/sneakers/1'}>
         <ButtonContained>На главную</ButtonContained>
       </Link>
     </main>

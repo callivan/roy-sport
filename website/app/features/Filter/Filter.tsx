@@ -1,32 +1,13 @@
-'use client';
-
 import { ButtonContained } from '@shared/ui';
 import classNames from 'classnames';
-import { usePathname, useRouter, useSearchParams } from 'next/navigation';
-import { useCallback, useLayoutEffect } from 'react';
+import Link from 'next/link';
 
-export function Filter() {
-  const router = useRouter();
-  const pathname = usePathname();
-  const searchParams = useSearchParams()!;
+import { TFilterProps } from './types/component';
 
-  const createQueryString = useCallback(
-    (name: string, value: string) => {
-      const params = new URLSearchParams(searchParams as any as URLSearchParams);
-      params.set(name, value);
-
-      return params.toString();
-    },
-    [searchParams],
-  );
-
-  const handleFilter = (query: 'ASC' | 'DESC') => {
-    router.push(pathname + '?' + createQueryString('order', query));
-  };
-
-  useLayoutEffect(() => {
-    handleFilter('DESC');
-  }, []);
+export function Filter({ pathname }: TFilterProps) {
+  const paths = pathname.split('/');
+  const order = paths[paths.length - 1];
+  const pathChunk = paths.slice(0, paths.length - 1).join('/');
 
   return (
     <div
@@ -35,18 +16,12 @@ export function Filter() {
         'flex items-center gap-3 flex-wrap',
       )}
     >
-      <ButtonContained
-        disabled={searchParams.get('order') === 'ASC'}
-        onClick={() => handleFilter('ASC')}
-      >
-        По возрастанию цены
-      </ButtonContained>
-      <ButtonContained
-        disabled={searchParams.get('order') === 'DESC'}
-        onClick={() => handleFilter('DESC')}
-      >
-        По убыванию цены
-      </ButtonContained>
+      <Link href={pathChunk + '/ASC'}>
+        <ButtonContained disabled={order === 'ASC'}>По возрастанию цены</ButtonContained>
+      </Link>
+      <Link href={pathChunk + '/DESC'}>
+        <ButtonContained disabled={order === 'DESC'}>По убыванию цены</ButtonContained>
+      </Link>
     </div>
   );
 }

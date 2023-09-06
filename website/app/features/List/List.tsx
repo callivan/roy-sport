@@ -1,34 +1,25 @@
-'use client';
-
 import { Card } from '@entities';
 import classNames from 'classnames';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
 
-export function List() {
-  const products = [
-    {
-      id: '1',
-      name: 'Nike Air',
-      price: 3000,
-      src: '',
-      preview: '',
-    },
-  ];
+import { TListProps } from './types/components';
 
-  const pathname = usePathname();
-
+export function List({ list, className, pathname, ...props }: TListProps) {
   return (
     <ul
       className={classNames(
+        // Custom class name
+        className,
+
         // Grid
         'grid grid-cols-products auto-rows-products gap-5 justify-center',
 
         // Tablet big
         'lg:gap-2',
       )}
+      {...props}
     >
-      {/* {products.map(({ id, ...props }) => (
+      {list.map(({ id, name, price, thumbnail }) => (
         <li
           key={id}
           className={classNames(
@@ -37,10 +28,17 @@ export function List() {
           )}
         >
           <Link href={`${pathname}/${id.toString()}`}>
-            <Card alt={`Кроссовки ${props.name}`} {...props} />
+            <Card
+              src={thumbnail.url}
+              preview={thumbnail.placeholder}
+              alt={`Кроссовки ${name}`}
+              name={name}
+              price={price}
+              isClientSide
+            />
           </Link>
         </li>
-      ))} */}
+      ))}
     </ul>
   );
 }

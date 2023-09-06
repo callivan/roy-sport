@@ -4,7 +4,8 @@
   "info": {
     "singularName": "sneaker",
     "pluralName": "sneakers",
-    "displayName": "Sneaker"
+    "displayName": "Sneaker",
+    "description": ""
   },
   "options": {
     "draftAndPublish": false
@@ -20,16 +21,24 @@
       "required": true
     },
     "price": {
-      "required": true,
-      "type": "float"
+      "type": "float",
+      "required": true
     },
     "categories": {
       "type": "component",
       "repeatable": true,
-      "component": "components.category",
+      "component": "categories.category",
       "required": true
     },
     "img": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
+    },
+    "thumbnail": {
       "allowedTypes": [
         "images"
       ],

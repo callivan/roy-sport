@@ -5,4 +5,8 @@ interface IPopupOwnProps {
   portalStyles?: string;
 }
 
+export interface IPopupRefProps {
+  onClose: () => void;
+}
+
 export type TPopupProps = Omit<TButton, keyof IPopupOwnProps> & IPopupOwnProps;
